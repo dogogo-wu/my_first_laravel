@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        .container{
+            width: 660px;
+            margin-left: 80px;
+            border: 3px solid cornflowerblue;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        #id_w, #id_h{
+            width: 60px;
+            border: 2px dashed blue;
+        }
+        table, tr, td, th{
+            border: 2px solid yellowgreen;
+        }
+        table{
+            margin: auto;
+        }
+        tr > td:first-child{
+            width: 200px;
+        }
+        tr > td:not(:first-child){
+            width: 150px;
+        }
+        button, label, span{
+            font-weight: bold;
+        }
+        .genderSec{
+            margin-bottom: 10px;
+        }
+        #id_result{
+            display: inline-block;
+            width: 400px;
+            height: 20px;
+            border: 2px solid lightcoral;
+            font-size: 16px;
+            font-weight: bold;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="Sec1">
+            <h1>BMI 計算機</h1>
+            <h4>身體質量指數(Body Mass Index，簡稱BMI)是公認用來估計肥胖程度的方法</h4>
+            <h4>BMI = 體重(公斤) / 身高的平方(公尺)</h4>
+        </div>
+        <div class="Sec2">
+            <div class="genderSec">
+                <label for="man"><input id="man" type="radio" name="sex" value="male" checked>男</label>
+                <label for="woman"><input id="woman" type="radio" name="sex" value="female">女</label>
+            </div>
+            <div class="calcSec">
+                <span>我的身高: </span><input id="id_h" type="number"> <span>公分，</span>
+                <span>我的體重: </span><input id="id_w" type="number"> <span>公斤。</span>
+                <button id="id_calc">計算</button>
+                <button id="id_redo">重新填寫</button>
+                <br>
+                <p id="id_result">計算結果將在這裡顯示</p>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th colspan="3">BMI 值</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>男性</td>
+                <td>女性</td>
+            </tr>
+            <tr>
+                <td>體重過輕</td>
+                <td><20</td>
+                <td><19</td>
+            </tr>
+            <tr>
+                <td>正常範圍</td>
+                <td>20~25</td>
+                <td>19~25</td>
+            </tr>
+            <tr>
+                <td>體重過重</td>
+                <td>25~30</td>
+                <td>25~30</td>
+            </tr>
+            <tr>
+                <td>肥胖</td>
+                <td>30~40</td>
+                <td>30~40</td>
+            </tr>
+            <tr>
+                <td>病態肥胖</td>
+                <td>>40</td>
+                <td>>40</td>
+            </tr>
+            
+        </table>
+    </div>
+    <script>
+        var calc = document.querySelector('#id_calc');
+        var redo = document.querySelector('#id_redo');
+        var height = document.querySelector('#id_h');
+        var weight = document.querySelector('#id_w');
+        var result = document.querySelector('#id_result');
+        
+        calc.addEventListener('click', function(){
+
+            if (!weight.value || !height.value){
+                alert("請輸入身高及體重！");
+                return;
+            }
+            console.log(weight.value);
+
+
+            var bmi = Number(weight.value) / (Number(height.value) / 100)**2;
+            bmi = Math.round(bmi * 100) / 100;
+
+            var gender = document.querySelector('input[name="sex"]:checked');
+            var postTxt;
+
+
+
+            if ((bmi < 20 && gender.value == "male") || (bmi < 19 && gender.value == "female")){
+                postTxt = "體重過輕";
+            }
+            else if (bmi < 25){
+                postTxt = "正常範圍";
+            }
+            else if (bmi < 30){
+                postTxt = "體重過重";
+            }
+            else if (bmi < 40){
+                postTxt = "肥胖";
+            }
+            else{
+                postTxt = "病態肥胖";
+            }
+
+            result.style.color = "black";
+            result.innerHTML = "BMI 值為：" + bmi + " ， 屬於 " + postTxt + "。";
+        });
+
+        redo.addEventListener('click', function(){
+            document.querySelector('#man').checked = true;
+            height.value = "";
+            weight.value = "";
+            result.style.color = "grey";
+            result.innerHTML = "計算結果將在這裡顯示";
+        });
+
+    </script>
+</body>
+</html>
