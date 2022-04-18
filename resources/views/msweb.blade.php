@@ -103,11 +103,11 @@
                             <li><a>檢視網站地圖</a></li>
                         </ul>
                     </div>
-                    <a class="search-anchor"><li><span class="c-1398-menu">搜尋 </span><img class="nav-icon-other" src="img/icon-search.PNG" alt=""></li></a>
+                    <a class="search-anchor"><li><span class="c-1398-menu">搜尋 </span><img class="nav-icon-other" src="img/img_ms/icon-search.PNG" alt=""></li></a>
                     <span class="push-icon"></span>
-                    <a class="cart-anchor"><li><span class="c-1398-menu">購物車 </span><img class="nav-icon-other" src="img/icon-cart.PNG" alt=""></li></a>
+                    <a class="cart-anchor"><li><span class="c-1398-menu">購物車 </span><img class="nav-icon-other" src="img/img_ms/icon-cart.PNG" alt=""></li></a>
                     <a class="li-login c-1398-menu" href="/"><li>登入 </li></a>
-                    <a class="a-login" href=""><li class="li-login-img"><img class="icon-login" src="img/icon-login.jpg" alt=""></li></a>
+                    <a class="a-login" href=""><li class="li-login-img"><img class="icon-login" src="img/img_ms/icon-login.jpg" alt=""></li></a>
                     <div class="menu-list" tabindex="0">
                         <div class="menu-list-top">
                             <div>
@@ -184,9 +184,9 @@
     <main>
         <section class="sec1">
             <picture>
-                <source media="(max-width: 766px)" srcset="img/bg1-0-c2.jpeg">
-                <source media="(max-width: 1082px)" srcset="img/bg1-0-c1.jpeg">
-                <img src="img/bg1-0.jpeg" alt="bg1">
+                <source media="(max-width: 766px)" srcset="img/img_ms/bg1-0-c2.jpeg">
+                <source media="(max-width: 1082px)" srcset="img/img_ms/bg1-0-c1.jpeg">
+                <img src="img/img_ms/bg1-0.jpeg" alt="bg1">
             </picture>
             <div class="tittle">
                 <p>新上市</p>
@@ -200,26 +200,26 @@
         <section class="sec2">
             <a>
                 <div class="mid-box">
-                    <img src="img/icon-microsoft.png" alt="">
+                    <img src="img/img_ms/icon-microsoft.png" alt="">
                     <div>選擇您的 Microsoft 365</div>
                 </div>
             </a>
             <a>
                 <div class="mid-box">
-                    <img src="img/icon-tablet.png" alt="">
+                    <img src="img/img_ms/icon-tablet.png" alt="">
                     <div>選購 Surface 裝置</div>
                 </div>
             </a>
             <a>
                 <div class="mid-box">
-                    <img src="img/icon-microsoft.png" alt="">
+                    <img src="img/img_ms/icon-microsoft.png" alt="">
                     <div>取得 Windows 11</div>
                 </div>
             </a>
         </section>
         <section class="sec3">
             <div class="bottom-box">
-                <img src="img/img-365.png" alt="">
+                <img src="img/img_ms/img-365.png" alt="">
                 <h3>Microsoft 365</h3>
                 <p>進階版 Office 應用程式、額外的雲端儲存空間、進階安全性等功能，全都在一個方便的訂閱中。</p>
                 <div>
@@ -228,20 +228,20 @@
                 </div>
             </div>
             <div class="bottom-box">
-                <img src="img/img-laptop.jpeg" alt="">
+                <img src="img/img_ms/img-laptop.jpeg" alt="">
                 <h3>Surface Laptop Go</h3>
                 <p>運用時尚和效能兼具、最輕巧的 Surface 筆記型電腦，善加利用每一天。</p>
                 <a><span>立即選購</span>  <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="bottom-box">
-                <img src="img/img-surface.jpeg" alt="">
+                <img src="img/img_ms/img-surface.jpeg" alt="">
                 <strong>查看更新的內容</strong>
                 <h3 id="under-strong">Surface Pro X</h3>
                 <p>隨時隨地以任何角度不間斷工作，而且配備了可拆式鍵盤與內建的 Slim Pen 存放空間和充電功能。 現在搭載 Windows 11。</p>
                 <a><span>立即選購</span>  <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="bottom-box">
-                <img src="img/img-xbox.jpeg" alt="">
+                <img src="img/img_ms/img-xbox.jpeg" alt="">
                 <h3>Xbox Game Pass Ultimate</h3>
                 <p>首月會員資格只要 NT$30。 在您擁有的裝置上遊玩。 包含 EA Play。 此優惠僅適用於新訂閱者。</p>
                 <a><span>立即加入</span>  <i class="fa-solid fa-chevron-right"></i></a>
@@ -249,9 +249,9 @@
         </section>
         <section class="sec4">
             <picture>
-                <source media="(max-width: 766px)" srcset="img/bg2-c2.jpeg">
-                <source media="(max-width: 1082px)" srcset="img/bg2-c1.jpeg">
-                <img src="img/bg2.jpeg" alt="bg2">
+                <source media="(max-width: 766px)" srcset="img/img_ms/bg2-c2.jpeg">
+                <source media="(max-width: 1082px)" srcset="img/img_ms/bg2-c1.jpeg">
+                <img src="img/img_ms/bg2.jpeg" alt="bg2">
             </picture>
             <div class="tittle txtbox-2">
                 <h2>Microsoft OneDrive</h2>
@@ -266,25 +266,25 @@
         </section>
         <section class="sec3 sec6">
             <div class="bottom-box">
-                <img src="img/img-b1.jpeg" alt="">
+                <img src="img/img_ms/img-b1.jpeg" alt="">
                 <h3>適用於商務的 Surface</h3>
                 <p>無論從事哪種工作，都有一款有助於成功的 Surface。</p>
                 <a><span>立即選購</span>  <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="bottom-box">
-                <img src="img/img-b2.jpeg" alt="">
+                <img src="img/img_ms/img-b2.jpeg" alt="">
                 <h3>免費取得 Microsoft Teams</h3>
                 <p>線上會議、聊天和共用雲端儲存空間，盡在一處。</p>
                 <a><span>免費註冊</span>  <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="bottom-box">
-                <img src="img/img-b3.jpeg" alt="">
+                <img src="img/img_ms/img-b3.jpeg" alt="">
                 <h3>在混合式環境中蓬勃發展</h3>
                 <p>探索工具、資源和策略，協助您的員工在靈活辦公的新環境中取得成功。</p>
                 <a><span>深入了解</span>  <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="bottom-box">
-                <img src="img/img-b4.jpeg" alt="">
+                <img src="img/img_ms/img-b4.jpeg" alt="">
                 <h3>商務用 Windows 11 登場</h3>
                 <p>專為混合式辦公而設計。 為員工帶來實用性。 為 IT 帶來一致性。 為所有人帶來安全性。</p>
                 <a><span>深入了解</span>  <i class="fa-solid fa-chevron-right"></i></a>
@@ -292,8 +292,8 @@
         </section>
         <section class="sec7">
             <span>關注 Microsoft</span>
-            <a><img src="img/icon-fb.jpg" alt=""></a>
-            <a><img src="img/icon-yt.jpg" alt=""></a>
+            <a><img src="img/img_ms/icon-fb.jpg" alt=""></a>
+            <a><img src="img/img_ms/icon-yt.jpg" alt=""></a>
         </section>
     </main>
     <footer>

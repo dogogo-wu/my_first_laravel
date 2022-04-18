@@ -1,0 +1,105 @@
+@media (min-width: 992px) {
+  .foot-icon {
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    left: 25%;
+    bottom: 5%;
+  }
+}
+
+.foot-icon i {
+  width: 36px;
+  text-align: center;
+}
+
+.my-login-con {
+  background-image: url("../img/login_bg_1.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.my-login-con .my-login-L {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.my-login-con .my-login-L .my-txt {
+  padding: 0 96px;
+}
+
+.my-login-con .my-login-R {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0px;
+}
+
+@media (min-width: 576px) {
+  .my-login-con .my-login-R {
+    padding: 0 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .my-login-con .my-login-R {
+    background-color: #162446;
+  }
+}
+
+.my-login-con .my-login-R .logo-login {
+  height: 48px;
+  width: 175px;
+}
+
+@media (min-width: 576px) {
+  .my-login-con .my-login-R .logo-login {
+    height: 64px;
+    width: 234px;
+  }
+}
+
+.my-login-con .my-login-R .cir-icon-group .cir-outline {
+  width: 40px;
+  height: 40px;
+}
+
+.my-login-con .my-login-R .input-area {
+  width: 100%;
+  padding: 0 16px;
+}
+
+@media (min-width: 576px) {
+  .my-login-con .my-login-R .input-area {
+    width: 66.67%;
+    padding: 0px;
+  }
+}
+
+.my-login-con .my-login-R .input-area input {
+  height: 60px;
+  width: 100%;
+  padding: 16px;
+  background-color: #000;
+  border-radius: 0;
+  border: 0;
+  font-weight: bold;
+}
+
+.my-login-con .my-login-R .input-area .link-style {
+  -webkit-transition: 1s;
+  transition: 1s;
+  color: #a0a0a0;
+}
+
+.my-login-con .my-login-R .input-area .link-style:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.my-login-con .my-login-R .input-area .my-sign-btn {
+  height: 60px;
+  font-size: 18px;
+  line-height: 42px;
+}
+/*# sourceMappingURL=login.css.map */
