@@ -39,6 +39,9 @@
                 </button>
             </div>
         </section>
+        {{-- @foreach ($users as $user)
+            <p>This is user {{ $user->id }}</p>
+        @endforeach --}}
         <section id="card-01">
             <div class="container px-4 py-5 con-setting">
                 <div class="row">
@@ -59,10 +62,9 @@
                             </svg>
                         </div>
                         <div class="card-body p-0">
-                            <h5 class="card-title mb-4">Shooting Stars</h5>
-                            <p class="card-text text-muted">Blue bottle crucifix vinyl post-ironic four dollar toast
-                                vegan
-                                taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.
+                            <h5 class="card-title mb-4">{{ $mydata[0]->tittle }}</h5>
+                            <p class="card-text text-muted">
+                                {{ $mydata[0]->content }}
                             </p>
                             <p><a href="#card-01" class="color-1">Learn More <i
                                         class="fa-solid fa-arrow-right"></i></a>
