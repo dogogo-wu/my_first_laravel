@@ -39,9 +39,7 @@
                 </button>
             </div>
         </section>
-        {{-- @foreach ($users as $user)
-            <p>This is user {{ $user->id }}</p>
-        @endforeach --}}
+
         <section id="card-01">
             <div class="container px-4 py-5 con-setting">
                 <div class="row">
@@ -51,9 +49,44 @@
                         taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
                     <div class="my-hr mx-auto mb-5"></div>
                 </div>
-
                 <div class="row text-center flex-column flex-md-row">
-                    <div class="col-md-4 card p-3 border-0">
+
+                    @foreach ($mydataAry as $mydata)
+                        <div class="col-md-4 card p-3 border-0">
+
+                            {{-- @if ($mydata->image)
+                                <?php //$imgStr = $mydata->image;
+                                ?>
+                            @else
+                                <?php //$imgStr = './img/img_bs/1.PNG';
+                                ?>
+                            @endif
+                            <img src={{ $imgStr }}
+                                class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center"> --}}
+
+                            @if ($mydata->image)
+                                <img src={{ $mydata->image }}
+                                    class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center">
+                            @else
+                                <div
+                                    class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center">
+                                    <span class="fs-2">{{ mb_substr($mydata->tittle, 0, 1, "utf-8") }}</span>
+                                </div>
+                            @endif
+
+                            <div class="card-body p-0">
+                                <h5 class="card-title mb-4">{{ $mydata->tittle }}</h5>
+                                <p class="card-text text-muted">
+                                    {{ $mydata->content }}
+                                </p>
+                                <p><a href="#card-01" class="color-1">Learn More <i
+                                            class="fa-solid fa-arrow-right"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="col-md-4 card p-3 border-0">
                         <div
                             class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -62,9 +95,10 @@
                             </svg>
                         </div>
                         <div class="card-body p-0">
-                            <h5 class="card-title mb-4">{{ $mydata[0]->tittle }}</h5>
+                            <h5 class="card-title mb-4">Shooting Stars</h5>
                             <p class="card-text text-muted">
-                                {{ $mydata[0]->content }}
+                                Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo
+                                juice poutine, ramps microdosing banh mi pug VHS try-hard.
                             </p>
                             <p><a href="#card-01" class="color-1">Learn More <i
                                         class="fa-solid fa-arrow-right"></i></a>
@@ -111,7 +145,7 @@
                                         class="fa-solid fa-arrow-right"></i></a>
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="d-flex justify-content-center mt-5">

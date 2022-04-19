@@ -40,7 +40,7 @@
                     <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">About</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">Contact</a>
+                    <a href="{{ url('/comment') }}" class="btn btn-outline-secondary border-0 px-3 py-2">Contact</a>
                 </li>
                 <li class="nav-item mx-2 d-flex align-items-center">
                     <a class="nav-link my-link" href="{{ url('/cart01') }}"><i class="fa-solid fa-cart-shopping fs-3"></i></a>

@@ -9,14 +9,12 @@ class BootstrapController extends Controller
 {
     //
     public function bsweb_func() {
-        // $data = DB::table('news')->get();
-        // $data1 = DB::table('news')->orderBy('id')->take(3)->get();
-        $data2 = DB::table('news')->orderBy('id', 'desc')->take(3)->get();
-        // $data3 = DB::table('news')->inRandomOrder()->take(3)->get();
 
-        // dd($data1, $data2, $data3);
+        // $mydataAry = DB::table('news')->orderBy('id', 'desc')->take(3)->get();
+        // $mydataAry = DB::table('news')->take(3)->get();
+        $mydataAry = DB::table('news')->inRandomOrder()->take(3)->get();
 
-        return view('hw_bootstrap.index', ['mydata' => $data2]);
+        return view('hw_bootstrap.index', compact('mydataAry'));
     }
 
     public function bsweb_cart01_func() {
@@ -34,4 +32,15 @@ class BootstrapController extends Controller
     public function bsweb_cart04_func() {
         return view('hw_bootstrap.cart_04');
     }
+
+    public function bsweb_comment_func() {
+        return view('hw_bootstrap.comment');
+    }
+
+    public function comment_save_func(Request $req) {
+        dd($req->all());
+    }
+
+
+
 }
