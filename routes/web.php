@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\BootstrapController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,16 @@ Route::get('/comment/edit/{target}', [BootstrapController::class, 'comment_edit_
 Route::get('/comment/update/{target}', [BootstrapController::class, 'comment_update_func']);
 
 Route::get('/bs_login', [NewController::class, 'bsweb_login_func']);
+
+
+Route::prefix('/banner')->group(function(){
+    Route::get('/', [BannerController::class, 'index']);
+    Route::get('/create', [BannerController::class, 'create']);
+    Route::get('/store', [BannerController::class, 'store']);
+    Route::get('/delete/{target}', [BannerController::class, 'delete']);
+    Route::get('/edit/{target}', [BannerController::class, 'edit']);
+    Route::get('/update/{target}', [BannerController::class, 'update']);
+});
+
 
 

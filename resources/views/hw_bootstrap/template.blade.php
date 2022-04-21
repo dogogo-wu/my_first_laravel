@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- Add your CSS Link --}}
     @yield('cssLink')
@@ -22,7 +22,7 @@
 <body>
     <nav class="container-xl navbar navbar-expand-md navbar-light">
         <a class="navbar-brand p-0" href="{{ url('/bootstrap') }}">
-            <img class="logo m-2" src="{{asset('img/img_bs/logo.svg')}}" alt="Logo">
+            <img class="logo m-2" src="{{ asset('img/img_bs/logo.svg') }}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav fw-bold d-flex align-items-center">
                 <li class="nav-item mx-2">
-                    <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">Blog</a>
+                    <a href="{{ url('/banner') }}" class="btn btn-outline-secondary border-0 px-3 py-2">管理Banner</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">Portfolio</a>
@@ -43,7 +43,8 @@
                     <a href="{{ url('/comment') }}" class="btn btn-outline-secondary border-0 px-3 py-2">Contact</a>
                 </li>
                 <li class="nav-item mx-2 d-flex align-items-center">
-                    <a class="nav-link my-link" href="{{ url('/cart01') }}"><i class="fa-solid fa-cart-shopping fs-3"></i></a>
+                    <a class="nav-link my-link" href="{{ url('/cart01') }}"><i
+                            class="fa-solid fa-cart-shopping fs-3"></i></a>
                     <a class="btn nav-link my-link dropdown-toggle ms-3" role="button" id="dropdown-1"
                         data-bs-toggle="dropdown" aria-expanded="false" href="#"><i
                             class="fa-solid fa-circle-user fs-2"></i></a>
@@ -76,6 +77,7 @@
                                             .cls-2 {
                                                 fill: #fff;
                                             }
+
                                         </style>
                                     </defs>
                                     <title>資產 2</title>
@@ -137,7 +139,8 @@
             </div>
         </section>
         <section id="copyright" class="bg-light">
-            <div class="container my-foot-con py-3 d-flex flex-column flex-sm-row align-items-center justify-content-sm-between text-secondary">
+            <div
+                class="container my-foot-con py-3 d-flex flex-column flex-sm-row align-items-center justify-content-sm-between text-secondary">
                 <p class="mb-0 small">© 2020 Tailblocks — @knyttneve</p>
                 <div class="mt-2 mt-sm-0">
                     <i class="fa-brands fa-facebook-f"></i>
@@ -151,9 +154,15 @@
 
     </footer>
 
+    {{-- Add your JS --}}
+    @yield('js')
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+    {{-- Add your JS CDN --}}
+    @yield('jsCdn')
 
 </body>
 
