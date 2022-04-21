@@ -41,6 +41,9 @@ Route::get('/cart04', [BootstrapController::class, 'bsweb_cart04_func']);
 
 Route::get('/comment', [BootstrapController::class, 'bsweb_comment_func']);
 Route::get('/comment/save', [BootstrapController::class, 'comment_save_func']);
+Route::get('/comment/delete/{target}', [BootstrapController::class, 'comment_delete_func']);
+Route::get('/comment/edit/{target}', [BootstrapController::class, 'comment_edit_func']);
+Route::get('/comment/update/{target}', [BootstrapController::class, 'comment_update_func']);
 
 Route::get('/bs_login', [NewController::class, 'bsweb_login_func']);
 

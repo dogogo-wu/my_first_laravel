@@ -34,12 +34,46 @@ class BootstrapController extends Controller
     }
 
     public function bsweb_comment_func() {
-        return view('hw_bootstrap.comment');
+        // $commentAry = DB::table('comments')->orderBy('id', 'desc')->take(3)->get();
+        $commentAry = DB::table('comments')->orderBy('id', 'desc')->get();
+        // dd($commentAry);
+        return view('hw_bootstrap.comment', compact('commentAry'));
     }
 
     public function comment_save_func(Request $req) {
-        dd($req->all());
+        // dd($req->all());
+        DB::table('comments')->insert([
+            'tittle' => $req->myTittle,
+            'name' => $req->myName,
+            'content' => $req->myContent,
+        ]);
+
+        return redirect('/comment');
     }
+
+    public function comment_delete_func($target) {
+        $deleted = DB::table('comments')->where('id', $target)->delete();
+        return redirect('/comment');
+    }
+
+    public function comment_edit_func($target) {
+        $edited = DB::table('comments')->where('id', $target)->first();
+        // dd($edited);
+        return view('hw_bootstrap.edit', compact('edited'));
+    }
+
+    public function comment_update_func($target, Request $req) {
+
+        DB::table('comments')->where('id', $target)->update([
+            'tittle' => $req->myTittle,
+            'name' => $req->myName,
+            'content' => $req->myContent,
+        ]);
+
+        return redirect('/comment');
+    }
+
+
 
 
 

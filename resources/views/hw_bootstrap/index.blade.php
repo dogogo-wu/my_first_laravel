@@ -18,13 +18,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./img/img_bs/1.PNG" class="d-block w-100" alt="...">
+                        <img src="{{asset('img/img_bs/1.PNG')}}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./img/img_bs/4.PNG" class="d-block w-100" alt="...">
+                        <img src="{{asset('img/img_bs/4.PNG')}}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./img/img_bs/3.PNG" class="d-block w-100" alt="...">
+                        <img src="{{asset('img/img_bs/3.PNG')}}" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -173,26 +173,26 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-6 p-md-2 p-1">
-                                <img src="./img/img_bs/1.PNG" alt="">
+                                <img src="{{asset('img/img_bs/1.PNG')}}" alt="">
                             </div>
                             <div class="col-6 p-md-2 p-1">
-                                <img src="./img/img_bs/2.PNG" alt="">
+                                <img src="{{asset('img/img_bs/2.PNG')}}" alt="">
                             </div>
                         </div>
                         <div class="row p-md-2 p-1">
-                            <img src="./img/img_bs/3.PNG" alt="">
+                            <img src="{{asset('img/img_bs/3.PNG')}}" alt="">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="row p-md-2 p-1">
-                            <img src="./img/img_bs/3.PNG" alt="">
+                            <img src="{{asset('img/img_bs/3.PNG')}}" alt="">
                         </div>
                         <div class="row">
                             <div class="col-6 p-md-2 p-1">
-                                <img src="./img/img_bs/2.PNG" alt="">
+                                <img src="{{asset('img/img_bs/2.PNG')}}" alt="">
                             </div>
                             <div class="col-6 p-md-2 p-1">
-                                <img src="./img/img_bs/1.PNG" alt="">
+                                <img src="{{asset('img/img_bs/1.PNG')}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -272,7 +272,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="./img/img_bs/3_1.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/3_1.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Chichen Itza</h5>
@@ -285,7 +285,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="./img/img_bs/3_2.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/3_2.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Colosseum Roma</h5>
@@ -298,7 +298,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="./img/img_bs/3_3.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/3_3.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Great Pyramid of Giza</h5>
@@ -311,7 +311,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="./img/img_bs/3_4.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/3_4.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">San Francisco</h5>
@@ -393,7 +393,7 @@
             <div class="container con-setting my-con-add">
                 <div class="row">
                     <div class="col-lg-6 my-l-col">
-                        <img class="w-100" src="./img/img_bs/4_1.png" alt="">
+                        <img class="w-100" src="{{asset('img/img_bs/4_1.png')}}" alt="">
                     </div>
                     <div class="col-lg-6 my-r-col py-3">
                         <p class="mb-0 small text-muted">BRAND NAME</p>
@@ -456,7 +456,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_1.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_1.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The Catalyzer</h5>
@@ -466,7 +466,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_2.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_2.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Shooting Stars</h5>
@@ -476,7 +476,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_3.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_3.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Neptune</h5>
@@ -486,7 +486,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_4.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_4.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The 400 Blows</h5>
@@ -496,7 +496,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_5.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_5.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The Catalyzer</h5>
@@ -506,7 +506,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_6.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_6.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Shooting Stars</h5>
@@ -516,7 +516,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_7.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_7.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Neptune</h5>
@@ -526,7 +526,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="./img/img_bs/5_8.png" class="img-fluid rounded" alt="...">
+                            <img src="{{asset('img/img_bs/5_8.png')}}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The 400 Blows</h5>

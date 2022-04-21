@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     {{-- Add your CSS Link --}}
     @yield('cssLink')
@@ -22,7 +22,7 @@
 <body>
     <nav class="container-xl navbar navbar-expand-md navbar-light">
         <a class="navbar-brand p-0" href="{{ url('/bootstrap') }}">
-            <img class="logo m-2" src="./img/img_bs/logo.svg" alt="Logo">
+            <img class="logo m-2" src="{{asset('img/img_bs/logo.svg')}}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
