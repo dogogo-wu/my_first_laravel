@@ -8,24 +8,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property mixed $created_at
  * @property mixed $updated_at
- * @property string $img_path
- * @property float $img_opacity
- * @property integer $weight
+ * @property string $name
+ * @property float $price
+ * @property integer $number
+ * @property string $introduction
  */
-class Banner extends Model
+class Product extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
      *
      * @var string
      */
-    protected $table = 'banners';
-    protected $primaryKey = 'id';
-
     protected $keyType = 'integer';
 
     /**
      * @var array
      */
-    protected $fillable = ['img_path', 'img_opacity', 'weight'];
+    protected $fillable = ['name', 'price', 'number', 'introduction'];
 }

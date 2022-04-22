@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\BootstrapController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,11 +53,19 @@ Route::get('/bs_login', [NewController::class, 'bsweb_login_func']);
 Route::prefix('/banner')->group(function(){
     Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
-    Route::get('/store', [BannerController::class, 'store']);
+    Route::post('/store', [BannerController::class, 'store']);
     Route::get('/delete/{target}', [BannerController::class, 'delete']);
     Route::get('/edit/{target}', [BannerController::class, 'edit']);
-    Route::get('/update/{target}', [BannerController::class, 'update']);
+    Route::post('/update/{target}', [BannerController::class, 'update']);
 });
 
+Route::prefix('/product')->group(function(){
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/create', [ProductController::class, 'create']);
+    Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/delete/{target}', [ProductController::class, 'delete']);
+    Route::get('/edit/{target}', [ProductController::class, 'edit']);
+    Route::post('/update/{target}', [ProductController::class, 'update']);
+});
 
 

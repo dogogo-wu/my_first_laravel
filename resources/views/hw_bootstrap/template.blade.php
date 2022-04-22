@@ -31,10 +31,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav fw-bold d-flex align-items-center">
                 <li class="nav-item mx-2">
-                    <a href="{{ url('/banner') }}" class="btn btn-outline-secondary border-0 px-3 py-2">管理Banner</a>
+                    <a href="{{ url('/banner') }}" class="btn btn-outline-secondary border-0 px-3 py-2">Banner管理</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">Portfolio</a>
+                    <a href="{{ url('/product') }}" class="btn btn-outline-secondary border-0 px-3 py-2">商品列表</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a href="#" class="btn btn-outline-secondary border-0 px-3 py-2">About</a>
