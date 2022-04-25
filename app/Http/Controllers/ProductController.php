@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Controllers\FilesController;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -18,7 +20,15 @@ class ProductController extends Controller
     }
 
     public function store(Request $req) {
+
+        if($req->product_img){
+            $path = FilesController::imgUpload($req->product_img, 'product');
+        }else{
+            $path = null;
+        }
+
         Product::create([
+            'img' => $path,
             'name' => $req->product_name,
             'price' => $req->product_price,
             'number' => $req->product_number,
@@ -29,7 +39,11 @@ class ProductController extends Controller
     }
 
     public function delete($target) {
-        Product::where('id', $target)->delete();
+
+        $targetObj = Product::find($target);
+        FilesController::deleteUpload($targetObj->img);
+        $targetObj->delete();
+
         return redirect('/product');
     }
 
@@ -39,12 +53,20 @@ class ProductController extends Controller
     }
 
     public function update($target, Request $req) {
-        Product::where('id', $target)->update([
-            'name' => $req->product_name,
-            'price' => $req->product_price,
-            'number' => $req->product_number,
-            'introduction' => $req->product_intro,
-        ]);
+        $targetObj = Product::find($target);
+
+        if($req->hasfile('product_img')){
+            $path = FilesController::imgUpload($req->product_img, 'product');
+            FilesController::deleteUpload($targetObj->img);
+
+            $targetObj->img = $path;
+        }
+
+        $targetObj->name = $req->product_name;
+        $targetObj->price = $req->product_price;
+        $targetObj->number = $req->product_number;
+        $targetObj->introduction = $req->product_intro;
+        $targetObj->save();
 
         return redirect('/product');
     }

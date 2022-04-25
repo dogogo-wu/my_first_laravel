@@ -14,8 +14,10 @@ class BootstrapController extends Controller
         // $mydataAry = DB::table('news')->orderBy('id', 'desc')->take(3)->get();
         // $mydataAry = DB::table('news')->take(3)->get();
         $mydataAry = DB::table('news')->inRandomOrder()->take(3)->get();
+        $prodAry = DB::table('products')->orderBy('id', 'desc')->get();
+        $prodRnd = DB::table('products')->inRandomOrder()->first();
 
-        return view('hw_bootstrap.index', compact('mydataAry'));
+        return view('hw_bootstrap.index', compact('mydataAry', 'prodAry', 'prodRnd'));
     }
 
     public function bsweb_cart01_func() {

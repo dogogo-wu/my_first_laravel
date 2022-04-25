@@ -12,7 +12,6 @@
             max-height: 400px;
             max-width: 400px;
         }
-
     </style>
 @endsection
 

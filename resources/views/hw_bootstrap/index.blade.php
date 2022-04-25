@@ -4,6 +4,16 @@
     Bootstrap-Website
 @endsection
 
+@section('cssLink')
+    <style>
+        #category img {
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+@endsection
+
 @section('mainSec')
     <main>
         <section id="banner">
@@ -18,13 +28,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('img/img_bs/1.PNG')}}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/img_bs/1.PNG') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('img/img_bs/4.PNG')}}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/img_bs/4.PNG') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('img/img_bs/3.PNG')}}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/img_bs/3.PNG') }}" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -55,11 +65,13 @@
                         <div class="col-md-4 card p-3 border-0">
 
                             {{-- @if ($mydata->image)
-                                <?php //$imgStr = $mydata->image;
-                                ?>
+                                @php
+                                    $imgStr = $mydata->image;
+                                @endphp
                             @else
-                                <?php //$imgStr = './img/img_bs/1.PNG';
-                                ?>
+                                @php
+                                    $imgStr = './img/img_bs/1.PNG';
+                                @endphp
                             @endif
                             <img src={{ $imgStr }}
                                 class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center"> --}}
@@ -70,7 +82,7 @@
                             @else
                                 <div
                                     class="cardimg color-1 bg-color-1 rounded-circle mx-auto d-flex justify-content-center align-items-center">
-                                    <span class="fs-2">{{ mb_substr($mydata->tittle, 0, 1, "utf-8") }}</span>
+                                    <span class="fs-2">{{ mb_substr($mydata->tittle, 0, 1, 'utf-8') }}</span>
                                 </div>
                             @endif
 
@@ -173,26 +185,26 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-6 p-md-2 p-1">
-                                <img src="{{asset('img/img_bs/1.PNG')}}" alt="">
+                                <img src="{{ asset('img/img_bs/1.PNG') }}" alt="">
                             </div>
                             <div class="col-6 p-md-2 p-1">
-                                <img src="{{asset('img/img_bs/2.PNG')}}" alt="">
+                                <img src="{{ asset('img/img_bs/2.PNG') }}" alt="">
                             </div>
                         </div>
                         <div class="row p-md-2 p-1">
-                            <img src="{{asset('img/img_bs/3.PNG')}}" alt="">
+                            <img src="{{ asset('img/img_bs/3.PNG') }}" alt="">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="row p-md-2 p-1">
-                            <img src="{{asset('img/img_bs/3.PNG')}}" alt="">
+                            <img src="{{ asset('img/img_bs/3.PNG') }}" alt="">
                         </div>
                         <div class="row">
                             <div class="col-6 p-md-2 p-1">
-                                <img src="{{asset('img/img_bs/2.PNG')}}" alt="">
+                                <img src="{{ asset('img/img_bs/2.PNG') }}" alt="">
                             </div>
                             <div class="col-6 p-md-2 p-1">
-                                <img src="{{asset('img/img_bs/1.PNG')}}" alt="">
+                                <img src="{{ asset('img/img_bs/1.PNG') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -272,7 +284,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="{{asset('img/img_bs/3_1.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/3_1.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Chichen Itza</h5>
@@ -285,7 +297,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="{{asset('img/img_bs/3_2.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/3_2.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Colosseum Roma</h5>
@@ -298,7 +310,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="{{asset('img/img_bs/3_3.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/3_3.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">Great Pyramid of Giza</h5>
@@ -311,7 +323,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card p-4 bg-light">
-                            <img src="{{asset('img/img_bs/3_4.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/3_4.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle mb-2 color-1 my-subtitle">SUBTITLE</h6>
                                 <h5 class="card-title mb-3">San Francisco</h5>
@@ -393,11 +405,12 @@
             <div class="container con-setting my-con-add">
                 <div class="row">
                     <div class="col-lg-6 my-l-col">
-                        <img class="w-100" src="{{asset('img/img_bs/4_1.png')}}" alt="">
+                        <img class="w-100" src="{{ asset($prodRnd->img) }}" alt="">
+                        {{-- <img class="w-100" src="{{ asset('img/img_bs/4_1.png') }}" alt=""> --}}
                     </div>
                     <div class="col-lg-6 my-r-col py-3">
                         <p class="mb-0 small text-muted">BRAND NAME</p>
-                        <p class="h2">The Catcher in the Rye</p>
+                        <p class="h2">{{$prodRnd->name}}</p>
                         <span class="color-1 small">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -417,10 +430,7 @@
                             <i class="fa-solid fa-comment"></i>
                         </span>
                         <p class="mt-4 text-muted">
-                            Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia
-                            microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn.
-                            Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over,
-                            neutra jean shorts keytar banjo tattooed umami cardigan.
+                            {{$prodRnd->introduction}}
                         </p>
                         <div class="d-flex align-items-center">
                             <p class="mb-0 me-3 text-secondary">Color</p>
@@ -438,7 +448,7 @@
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="h3">$58.00</div>
+                            <div class="h3">${{$prodRnd->price}}.00</div>
                             <div class="d-flex">
                                 <button type="button" class="btn btn-primary my-btn">Button</button>
                                 <div
@@ -454,9 +464,51 @@
         <section id="category">
             <div class="container con-setting">
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 p-3">
+
+                    @foreach ($prodAry as $prod)
+                        <div class="col-xl-3 col-md-6 p-3">
+                            <div class="card border-0">
+                                <img src="{{ asset($prod->img) }}" class="img-fluid rounded" alt="...">
+                                <div class="card-body px-0">
+                                    <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
+                                    <h5 class="card-title mb-2">{{ $prod->name }}</h5>
+                                    <p class="card-text text-muted">${{ $prod->price }}.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- @for ($i = 0; $i < 8; $i++)
+                        @if ($i < count($prodAry))
+                            @php
+                                $prod_img = $prodAry[$i]->img;
+                                $prod_name = $prodAry[$i]->name;
+                                $prod_price = $prodAry[$i]->price;
+                            @endphp
+                        @else
+                            @php
+                                $prod_img = 'img/img_bs/5_1.png';
+                                $prod_name = 'Shooting Stars';
+                                $prod_price = '21.15';
+                            @endphp
+                        @endif
+
+                        <div class="col-xl-3 col-md-6 p-3">
+                            <div class="card border-0">
+                                <img src="{{ asset($prod_img) }}" class="img-fluid rounded" alt="...">
+                                <div class="card-body px-0">
+                                    <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
+                                    <h5 class="card-title mb-2">{{ $prod_name }}</h5>
+                                    <p class="card-text text-muted">${{ $prod_price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor --}}
+
+
+                    {{-- <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_1.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/2.PNG') }}" class="img-fluid rounded " alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The Catalyzer</h5>
@@ -466,7 +518,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_2.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_2.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Shooting Stars</h5>
@@ -476,7 +528,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_3.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_3.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Neptune</h5>
@@ -486,7 +538,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_4.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_4.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The 400 Blows</h5>
@@ -496,7 +548,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_5.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_5.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The Catalyzer</h5>
@@ -506,7 +558,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_6.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_6.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Shooting Stars</h5>
@@ -516,7 +568,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_7.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_7.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">Neptune</h5>
@@ -526,14 +578,14 @@
                     </div>
                     <div class="col-xl-3 col-md-6 p-3">
                         <div class="card border-0">
-                            <img src="{{asset('img/img_bs/5_8.png')}}" class="img-fluid rounded" alt="...">
+                            <img src="{{ asset('img/img_bs/5_8.png') }}" class="img-fluid rounded" alt="...">
                             <div class="card-body px-0">
                                 <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
                                 <h5 class="card-title mb-2">The 400 Blows</h5>
                                 <p class="card-text text-muted">$18.40</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>

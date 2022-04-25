@@ -5,8 +5,14 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href="{{asset('css/cart.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        form img {
+            max-height: 400px;
+            max-width: 400px;
+        }
+    </style>
 @endsection
 
 @section('mainSec')
@@ -15,6 +21,13 @@
             <div class="container my-cart-con">
                 <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data">
                     @csrf
+
+                    <img id="blah" src="" alt="your image" class="d-none">
+
+                    <div class="mb-3">
+                        <label for="product_img" class="form-label my-label-txt">圖片上傳</label>
+                        <input type="file" class="form-control" id="product_img" name="product_img">
+                    </div>
                     <div class="mb-3">
                         <label for="product_name" class="form-label my-label-txt">品名</label>
                         <input type="text" class="form-control my-placeholder-txt" id="product_name" name="product_name"
@@ -45,4 +58,16 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('js')
+    <script>
+        product_img.onchange = evt => {
+            const [file] = product_img.files;
+            if (file) {
+                blah.src = URL.createObjectURL(file);
+                blah.classList.remove("d-none");
+            }
+        }
+    </script>
 @endsection

@@ -22,12 +22,13 @@
             <div class="container my-cart-con ">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <p class="h2 fw-bold mb-0">商品列表</p>
-                    <a href="/product/create" class="btn btn-success m">新增商品</a>
+                    <a href="/product/create" class="btn btn-success">新增商品</a>
                 </div>
 
                 <table id="product_list" class="display">
                     <thead>
                         <tr>
+                            <th>圖片</th>
                             <th>品名</th>
                             <th>價格</th>
                             <th>數量</th>
@@ -38,13 +39,19 @@
                     <tbody>
                         @foreach ($productAry as $product)
                             <tr>
+                                <td>
+                                    <img src="{{$product->img}}" alt="">
+                                </td>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->number}}</td>
                                 <td>{{$product->introduction}}</td>
                                 <td>
-                                    <a href="/product/delete/{{ $product->id }}" class="btn btn-outline-danger btn-sm me-3">刪除</a>
-                                    <a href="/product/edit/{{ $product->id }}" class="btn btn-outline-success btn-sm">編輯</a>
+                                    <a href="/product/edit/{{ $product->id }}" class="btn btn-outline-success btn-sm me-2 mb-2">編輯</a>
+                                    <a onclick="del_product({{ $product->id }})" class="btn btn-outline-danger btn-sm me-2 mb-2">刪除</a>
+                                    <form id="prodForm{{ $product->id }}" action="/product/delete/{{ $product->id }}" method="post" hidden>
+                                        @csrf
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -53,6 +60,14 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('js')
+    <script>
+        function del_product(myid){
+            document.querySelector('#prodForm' + myid).submit();
+        }
+    </script>
 @endsection
 
 @section('jsCdn')
