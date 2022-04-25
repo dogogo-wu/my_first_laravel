@@ -54,7 +54,7 @@ Route::prefix('/banner')->group(function(){
     Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
     Route::post('/store', [BannerController::class, 'store']);
-    Route::get('/delete/{target}', [BannerController::class, 'delete']);
+    Route::post('/delete/{target}', [BannerController::class, 'delete']);
     Route::get('/edit/{target}', [BannerController::class, 'edit']);
     Route::post('/update/{target}', [BannerController::class, 'update']);
 });
@@ -63,7 +63,7 @@ Route::prefix('/product')->group(function(){
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/create', [ProductController::class, 'create']);
     Route::post('/store', [ProductController::class, 'store']);
-    Route::get('/delete/{target}', [ProductController::class, 'delete']);
+    Route::post('/delete/{target}', [ProductController::class, 'delete']);
     Route::get('/edit/{target}', [ProductController::class, 'edit']);
     Route::post('/update/{target}', [ProductController::class, 'update']);
 });

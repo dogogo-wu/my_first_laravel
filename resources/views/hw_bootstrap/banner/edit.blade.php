@@ -5,13 +5,14 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href="{{asset('css/cart.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <style>
-        table img{
-            max-height: 200px;
-            max-width: 200px;
+        form img {
+            max-height: 400px;
+            max-width: 400px;
         }
+
     </style>
 @endsection
 
@@ -20,35 +21,48 @@
         <section id="cart-sec" class="py-5">
             <div class="container my-cart-con ">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <p class="h2 fw-bold mb-0">Banner 管理</p>
-                    <a href="/banner/update/{{ $edited->id }}" class="btn btn-success m">新增Banner</a>
+                    <p class="h2 fw-bold mb-0">Banner編輯</p>
                 </div>
 
-                <table id="banner_list" class="display">
-                    <thead>
-                        <tr>
-                            <th>圖片預覽</th>
-                            <th>圖片權重</th>
-                            <th>功能</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <form class="d-flex flex-column" action="/banner/update/{{ $edited->id }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3 d-flex flex-column">
+                        <p class="mb-0">現在的圖片</p>
+                        <img id="blah" src="{{ asset($edited->img_path) }}" alt="your image" />
+                        <label for="banner_img" class="form-label my-label-txt mt-3">BANNER圖片上傳</label>
+                        <input type="file" name="banner_img" id="banner_img">
+                    </div>
 
-                    </tbody>
-                </table>
+                    <div class="mb-3">
+                        <label for="banner_opacity" class="form-label my-label-txt">透明度設定</label>
+                        <input type="text" name="banner_opacity" id="banner_opacity" class="form-control my-placeholder-txt"
+                            value="{{ $edited->img_opacity }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="img_weight" class="form-label my-label-txt">權重設定</label>
+                        <input type="number" name="img_weight" id="img_weight" class="form-control my-placeholder-txt"
+                            value="{{ $edited->weight }}">
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <input type="reset" value="重做" class="btn btn-secondary px-4 mx-2 my-next-btn">
+                        <input type="submit" value="送出" class="btn btn-primary px-4 mx-2 my-next-btn">
+                    </div>
+                </form>
             </div>
         </section>
     </main>
 @endsection
 
-@section('jsCdn')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-</script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#banner_list').DataTable();
-    });
-</script>
+@section('js')
+    <script>
+        banner_img.onchange = evt => {
+            const [file] = banner_img.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 @endsection

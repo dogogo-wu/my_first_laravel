@@ -16,6 +16,12 @@
                 <form class="d-flex flex-column" action="/product/update/{{ $edited->id }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
+                    <div class="mb-3 d-flex flex-column">
+                        <p class="mb-0">現在的圖片</p>
+                        <img id="blah" src="{{ asset($edited->img_path) }}" alt="your image" />
+                        <label for="product_img" class="form-label my-label-txt mt-3">商品圖片上傳</label>
+                        <input type="file" name="product_img" id="product_img">
+                    </div>
                     <div class="mb-3">
                         <label for="product_name" class="form-label my-label-txt">品名</label>
                         <input type="text" class="form-control my-placeholder-txt" id="product_name" name="product_name" value="{{ $edited->name }}">
@@ -34,7 +40,7 @@
                         <label for="product_intro" class="form-label my-label-txt">介紹</label>
                         <input type="text" class="form-control my-placeholder-txt" id="product_intro" name="product_intro" value="{{ $edited->introduction }}">
                     </div>
-                    
+
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         <input type="reset" value="重做" class="btn btn-secondary px-4 mx-2 my-next-btn">
                         <input type="submit" value="編輯完成" class="btn btn-primary px-4 mx-2 my-next-btn">
@@ -44,4 +50,15 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('js')
+    <script>
+        banner_img.onchange = evt => {
+            const [file] = banner_img.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 @endsection

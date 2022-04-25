@@ -37,52 +37,33 @@
                         @foreach ($bannerAry as $banner)
                             <tr>
                                 <td>
-                                    <img src="{{ $banner->img_path }}" alt="{{ $banner->img_path }}">
+                                    <img src="{{ asset($banner->img_path) }}" alt="{{$banner->img_path }}" style="opacity: {{$banner->img_opacity}}">
                                 </td>
                                 <td>{{$banner->weight}}</td>
                                 <td>
-                                    <a href="/banner/delete/{{ $banner->id }}" class="btn btn-outline-danger btn-sm me-3">刪除</a>
+                                    <button class="btn btn-outline-danger btn-sm me-3" onclick="del_banner({{ $banner->id }})">刪除</button>
                                     <a href="/banner/edit/{{ $banner->id }}" class="btn btn-outline-success btn-sm">編輯</a>
+                                    <form id="delForm{{ $banner->id }}" action="/banner/delete/{{ $banner->id }}" method="POST">
+                                        @csrf
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
-
-
-                        {{-- <tr>
-                            <td>
-                                <img src="{{asset('img/img_bs/1.PNG')}}" alt="">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <a href="/banner/delete" class="btn btn-outline-danger btn-sm me-3">刪除</a>
-                                <a href="/banner/edit" class="btn btn-outline-success btn-sm">編輯</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="{{asset('img/img_bs/2.PNG')}}" alt="">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <a href="/banner/delete" class="btn btn-outline-danger btn-sm me-3">刪除</a>
-                                <a href="/banner/edit" class="btn btn-outline-success btn-sm">編輯</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="{{asset('img/img_bs/3.PNG')}}" alt="">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <a href="/banner/delete" class="btn btn-outline-danger btn-sm me-3">刪除</a>
-                                <a href="/banner/edit" class="btn btn-outline-success btn-sm">編輯</a>
-                            </td>
-                        </tr> --}}
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
+@endsection
+
+@section('js')
+    <script>
+        function del_banner($id){
+
+            document.querySelector('#delForm' + $id).submit();
+            // console.log('Hello' + tmp);
+        }
+    </script>
 @endsection
 
 @section('jsCdn')
