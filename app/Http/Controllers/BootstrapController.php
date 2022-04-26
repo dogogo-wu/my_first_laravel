@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
+use App\Models\Banner;
+use App\Models\Product;
 
 class BootstrapController extends Controller
 {
@@ -14,10 +16,13 @@ class BootstrapController extends Controller
         // $mydataAry = DB::table('news')->orderBy('id', 'desc')->take(3)->get();
         // $mydataAry = DB::table('news')->take(3)->get();
         $mydataAry = DB::table('news')->inRandomOrder()->take(3)->get();
-        $prodAry = DB::table('products')->orderBy('id', 'desc')->get();
-        $prodRnd = DB::table('products')->inRandomOrder()->first();
 
-        return view('hw_bootstrap.index', compact('mydataAry', 'prodAry', 'prodRnd'));
+        $banAry = Banner::inRandomOrder()->get();
+
+        $prodAry = Product::orderBy('id', 'desc')->take(8)->get();
+        $prodRnd = Product::inRandomOrder()->first();
+
+        return view('hw_bootstrap.index', compact('mydataAry', 'prodAry', 'prodRnd', 'banAry'));
     }
 
     public function bsweb_cart01_func() {
