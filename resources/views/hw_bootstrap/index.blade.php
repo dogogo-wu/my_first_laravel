@@ -11,40 +11,47 @@
             object-fit: cover;
             object-position: center;
         }
+
     </style>
 @endsection
 
 @section('mainSec')
     <main>
         <section id="banner">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div id="carousel_Id" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+
+                    @foreach ($banAry as $ban)
+                        @if ($loop->index == 0)
+                            <button type="button" data-bs-target="#carousel_Id" data-bs-slide-to="0"
+                                class="active"></button>
+                        @else
+                            <button type="button" data-bs-target="#carousel_Id"
+                                data-bs-slide-to="{{ $loop->index }}"></button>
+                        @endif
+                    @endforeach
+
                 </div>
                 <div class="carousel-inner">
 
-                    <div class="carousel-item active">
-                        <img src="{{ asset('img/img_bs/1.PNG') }}" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('img/img_bs/4.PNG') }}" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('img/img_bs/3.PNG') }}" class="d-block w-100" alt="...">
-                    </div>
+                    @foreach ($banAry as $ban)
+                        @if ($loop->index == 0)
+                            <div class="carousel-item active">
+                                <img src="{{ asset($ban->img_path) }}" class="d-block w-100" alt="...">
+                            </div>
+                        @else
+                            <div class="carousel-item">
+                                <img src="{{ asset($ban->img_path) }}" class="d-block w-100" alt="...">
+                            </div>
+                        @endif
+                    @endforeach
+
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel_Id" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel_Id" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -411,7 +418,7 @@
                     </div>
                     <div class="col-lg-6 my-r-col py-3">
                         <p class="mb-0 small text-muted">BRAND NAME</p>
-                        <p class="h2">{{$prodRnd->name}}</p>
+                        <p class="h2">{{ $prodRnd->name }}</p>
                         <span class="color-1 small">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -431,7 +438,7 @@
                             <i class="fa-solid fa-comment"></i>
                         </span>
                         <p class="mt-4 text-muted">
-                            {{$prodRnd->introduction}}
+                            {{ $prodRnd->introduction }}
                         </p>
                         <div class="d-flex align-items-center">
                             <p class="mb-0 me-3 text-secondary">Color</p>
@@ -449,7 +456,7 @@
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="h3">${{$prodRnd->price}}.00</div>
+                            <div class="h3">${{ $prodRnd->price }}.00</div>
                             <div class="d-flex">
                                 <button type="button" class="btn btn-primary my-btn">Button</button>
                                 <div
