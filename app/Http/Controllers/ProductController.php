@@ -36,13 +36,14 @@ class ProductController extends Controller
             'number' => $req->product_number,
             'introduction' => $req->product_intro,
         ]);
-
-        foreach ($req->second_img as $key => $value) {
-            $path = FilesController::imgUpload($value, 'product');
-            ProductImg::create([
-                'img_path' => $path,
-                'product_id' => $get_prod->id,
-            ]);
+        if($req->hasfile('second_img')){
+            foreach ($req->second_img as $key => $value) {
+                $path = FilesController::imgUpload($value, 'product');
+                ProductImg::create([
+                    'img_path' => $path,
+                    'product_id' => $get_prod->id,
+                ]);
+            }
         }
 
 
@@ -53,6 +54,13 @@ class ProductController extends Controller
     public function delete($target) {
 
         $targetObj = Product::find($target);
+
+        $imgsAry = ProductImg::where('product_id', $target)->get();
+        foreach ($imgsAry as $key => $value) {
+            FilesController::deleteUpload($value->img_path);
+            $value->delete();
+        }
+
         FilesController::deleteUpload($targetObj->img);
         $targetObj->delete();
 
@@ -80,6 +88,26 @@ class ProductController extends Controller
         $targetObj->introduction = $req->product_intro;
         $targetObj->save();
 
+        if($req->hasfile('second_img')){
+            foreach ($req->second_img as $key => $value) {
+                $path = FilesController::imgUpload($value, 'product');
+                ProductImg::create([
+                    'img_path' => $path,
+                    'product_id' => $target,
+                ]);
+            }
+        }
+
         return redirect('/product');
+    }
+
+    public function del_secimg_func($sec_tar){
+        $tarimg = ProductImg::find($sec_tar);
+        $prod_id = $tarimg -> product_id;
+
+        FilesController::deleteUpload($tarimg->img_path);
+        $tarimg->delete();
+
+        return redirect('/product/edit/'.$prod_id);
     }
 }

@@ -66,6 +66,7 @@ Route::prefix('/product')->group(function(){
     Route::post('/delete/{target}', [ProductController::class, 'delete']);
     Route::get('/edit/{target}', [ProductController::class, 'edit']);
     Route::post('/update/{target}', [ProductController::class, 'update']);
+    Route::delete('/del_sec_img/{sec_tar}', [ProductController::class, 'del_secimg_func']);
 });
 
 
