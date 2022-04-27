@@ -89,8 +89,4 @@ class BootstrapController extends Controller
         return redirect('/comment');
     }
 
-
-
-
-
 }

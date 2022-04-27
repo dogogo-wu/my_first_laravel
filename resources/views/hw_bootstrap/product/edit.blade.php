@@ -31,6 +31,13 @@
                         <label for="product_img" class="form-label my-label-txt mt-3">商品圖片上傳</label>
                         <input type="file" name="product_img" id="product_img" class="form-control">
                     </div>
+                    <p class="mb-0">現在次要圖片</p>
+                    <div class="mb-3 d-flex flex-wrap">
+                        @foreach ($edited->imgs as $item)
+                            <img src="{{$item->img_path}}" alt="" style="width: 100px;" class="me-3">
+                        @endforeach
+
+                    </div>
                     <div class="mb-3">
                         <label for="product_name" class="form-label my-label-txt">品名</label>
                         <input type="text" class="form-control my-placeholder-txt" id="product_name" name="product_name" value="{{ $edited->name }}">

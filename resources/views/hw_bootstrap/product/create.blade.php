@@ -26,8 +26,12 @@
                     <img id="blah" src="" alt="your image" class="d-none">
 
                     <div class="mb-3">
-                        <label for="product_img" class="form-label my-label-txt">圖片上傳</label>
-                        <input type="file" class="form-control" id="product_img" name="product_img">
+                        <label for="product_img" class="form-label my-label-txt">主要圖片上傳</label>
+                        <input type="file" class="form-control" id="product_img" name="product_img" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="second_img" class="form-label my-label-txt">次要圖片上傳</label>
+                        <input type="file" class="form-control" id="second_img" name="second_img[]" accept="image/*" multiple>
                     </div>
                     <div class="mb-3">
                         <label for="product_name" class="form-label my-label-txt">品名</label>
@@ -63,6 +67,14 @@
 
 @section('js')
     <script>
+        // product_img.onclick = evt =>{
+        //     const [file] = product_img.files;
+        //     if (!file) {
+        //         blah.classList.add("d-none");
+        //     }
+        // }
+        var pathtmp;
+
         product_img.onchange = evt => {
             const [file] = product_img.files;
             if (file) {
