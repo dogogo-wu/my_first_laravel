@@ -44,7 +44,7 @@
                     <p class="mb-0">現在次要圖片</p>
                     <div class="d-flex flex-wrap">
                         @foreach ($edited->imgs as $item)
-                            <div class="d-flex flex-column align-items-center">
+                            <div class="d-flex flex-column align-items-center" id="sec_img_div{{ $item->id }}">
                                 <img src="{{ $item->img_path }}" alt="" class="me-3 mb-2 sec_img">
                                 <button onclick="del_sec_prod({{ $item->id }})"
                                     class="btn btn-outline-danger btn-sm me-2 mb-2 w-50" type="button">刪除</button>
@@ -81,13 +81,13 @@
                         <input type="submit" value="編輯完成" class="btn btn-primary px-4 mx-2 my-next-btn">
                     </div>
                 </form>
-                @foreach ($edited->imgs as $item)
+                {{-- @foreach ($edited->imgs as $item)
                     <form id="prodSecForm{{ $item->id }}" action="/product/del_sec_img/{{ $item->id }}"
                         method="post" hidden>
                         @method('DELETE')
                         @csrf
                     </form>
-                @endforeach
+                @endforeach --}}
 
             </div>
         </section>
@@ -104,7 +104,28 @@
         }
 
         function del_sec_prod(myid) {
-            document.querySelector('#prodSecForm' + myid).submit();
+
+            //---------- 使用Form表單時，刪除的方法 ----------//
+            // document.querySelector('#prodSecForm' + myid).submit();
+
+
+            //---------- 使用Fetch時，刪除的方法 ----------//
+            let formData = new FormData();
+            formData.append('_method', 'DELETE');
+            formData.append('_token', '{{csrf_token()}}');
+
+            fetch("/product/del_sec_img/"+myid, {
+                method: "POST",
+                body: formData
+            }).then(function(response){
+                //------ 子方法1，使用reload ------//
+                // location.reload()
+
+                //------ 子方法2，使用javescript刪除元件 ------//
+                let ele = document.querySelector('#sec_img_div' + myid);
+                ele.remove();
+            })
+
         }
     </script>
 @endsection
