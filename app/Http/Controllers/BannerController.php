@@ -10,12 +10,16 @@ class BannerController extends Controller
 {
     public function index() {
         $bannerAry = Banner::get();
+        $header = 'Banner管理-編輯頁';
+        $slot = '';
 
-        return view('hw_bootstrap.banner.banner', compact('bannerAry'));
+        return view('hw_bootstrap.banner.banner', compact('bannerAry', 'header', 'slot'));
     }
 
     public function create() {
-        return view('hw_bootstrap.banner.create');
+        $header = 'Banner管理-編輯頁';
+        $slot = '';
+        return view('hw_bootstrap.banner.create',compact('header', 'slot'));
     }
 
     public function store(Request $req) {
@@ -44,7 +48,9 @@ class BannerController extends Controller
 
     public function edit($target) {
         $edited = Banner::find($target);
-        return view('hw_bootstrap.banner.edit', compact('edited'));
+        $header = 'Banner管理-編輯頁';
+        $slot = '';
+        return view('hw_bootstrap.banner.edit', compact('edited', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {

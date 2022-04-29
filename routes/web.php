@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\BootstrapController;
@@ -30,27 +31,31 @@ use App\Http\Controllers\ProductController;
 //     return "Hello World!";
 // });
 
-Route::get('/', [Controller::class, 'welcome_func']);
+// Route::get('/', [Controller::class, 'welcome_func']);
 
 Route::get('/microsoft', [NewController::class, 'msweb_func']);
 
-Route::get('/bootstrap', [BootstrapController::class, 'bsweb_func']);
+Route::get('/', [BootstrapController::class, 'bsweb_func']);
 
 Route::get('/cart01', [BootstrapController::class, 'bsweb_cart01_func']);
 Route::get('/cart02', [BootstrapController::class, 'bsweb_cart02_func']);
 Route::get('/cart03', [BootstrapController::class, 'bsweb_cart03_func']);
 Route::get('/cart04', [BootstrapController::class, 'bsweb_cart04_func']);
 
-Route::get('/comment', [BootstrapController::class, 'bsweb_comment_func']);
-Route::get('/comment/save', [BootstrapController::class, 'comment_save_func']);
-Route::get('/comment/delete/{target}', [BootstrapController::class, 'comment_delete_func']);
-Route::get('/comment/edit/{target}', [BootstrapController::class, 'comment_edit_func']);
-Route::get('/comment/update/{target}', [BootstrapController::class, 'comment_update_func']);
 
-Route::get('/bs_login', [NewController::class, 'bsweb_login_func']);
+Route::prefix('/comment')->group(function(){
+    Route::get('/', [BootstrapController::class, 'bsweb_comment_func']);
+    Route::get('/save', [BootstrapController::class, 'comment_save_func']);
+    Route::get('/delete/{target}', [BootstrapController::class, 'comment_delete_func'])->middleware(['auth']);
+    Route::get('/edit/{target}', [BootstrapController::class, 'comment_edit_func'])->middleware(['auth']);
+    Route::get('/update/{target}', [BootstrapController::class, 'comment_update_func'])->middleware(['auth']);
+});
 
 
-Route::prefix('/banner')->group(function(){
+Route::get('/login', [NewController::class, 'bsweb_login_func']);
+
+
+Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
     Route::post('/store', [BannerController::class, 'store']);
@@ -59,7 +64,7 @@ Route::prefix('/banner')->group(function(){
     Route::post('/update/{target}', [BannerController::class, 'update']);
 });
 
-Route::prefix('/product')->group(function(){
+Route::prefix('/product')->middleware(['auth'])->group(function(){
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/create', [ProductController::class, 'create']);
     Route::post('/store', [ProductController::class, 'store']);
@@ -69,4 +74,9 @@ Route::prefix('/product')->group(function(){
     Route::delete('/del_sec_img/{sec_tar}', [ProductController::class, 'del_secimg_func']);
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 

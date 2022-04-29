@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/login.css">
+    <style>
+        #login-all .in-txt {
+            color: white;
+        }
+
+        #remember_me {
+            height: 12px;
+            width: 12px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -18,15 +29,13 @@
         <section id="login-all">
             <div class="container-fluid my-login-con vh-100 w-100 position-relative">
                 <div class="row">
-                    <div
-                        class="col-lg-6 my-login-L vh-100 h-100 d-none d-lg-flex align-items-center flex-wrap p-0">
+                    <div class="col-lg-6 my-login-L vh-100 h-100 d-none d-lg-flex align-items-center flex-wrap p-0">
                         <div class="my-txt">
                             <p class="display-5 fw-bold">Keep it special</p>
                             <p class="h3">Capture your personal memory in unique way, anywhere.</p>
                         </div>
                     </div>
-                    <div
-                        class="col-lg-6 my-login-R vh-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-lg-6 my-login-R vh-100 d-flex flex-column align-items-center justify-content-center">
                         <div>
                         </div>
                         <div class="logo-login">
@@ -37,6 +46,7 @@
                                         .cls-1 {
                                             fill: #fff;
                                         }
+
                                     </style>
                                 </defs>
                                 <title>資產 2</title>
@@ -77,17 +87,29 @@
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </div>
                         </div>
-                        <div class="input-area d-flex align-items-center flex-column">
-                            <p class="text-center">or use email your account</p>
-                            <input type="text" class="form-control mb-3" id="staticEmail" value="" placeholder="Email">
-                            <input type="password" class="form-control mb-3" id="inputPassword" placeholder="Password">
-                            <p class="link-style ms-auto">Forgot your password?</p>
-                            <div class=" w-100 p-3 pb-2 mb-5 mb-lg-0">
-                                <a role="button" class="btn btn-primary my-btn w-100 rounded-pill my-sign-btn"
-                                    href="https://getbootstrap.com/">SIGN
-                                    IN</a>
+                        <form class="w-100" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="input-area d-flex align-items-center flex-column mx-auto">
+                                <p class="text-center">or use email your account</p>
+                                <input type="text" name="email" class="form-control mb-3 in-txt" id="staticEmail"
+                                    value="" placeholder="Email">
+                                <input type="password" name="password" class="form-control mb-3 in-txt"
+                                    id="inputPassword" placeholder="Password">
+
+                                <label for="remember_me" class="d-flex w-100 me-auto align-items-center">
+                                    <input id="remember_me" type="checkbox" class="me-2" name="remember">
+                                    <span class="txt-small">Remember me</span>
+                                </label>
+                                <p class="link-style ms-auto">Forgot your password?</p>
+
+                                <div class=" w-100 p-3 pb-2 mb-5 mb-lg-0">
+                                    <button type="submit"
+                                        class="btn btn-primary my-btn w-100 rounded-pill my-sign-btn">SIGN
+                                        IN</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+
                         <div class="d-flex justify-content-center foot-icon fs-4">
                             <i class="fa-brands fa-twitter"></i>
                             <i class="fa-brands fa-facebook-f"></i>
@@ -99,8 +121,8 @@
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

@@ -21,7 +21,7 @@
 
 <body>
     <nav class="container-xl navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand p-0" href="{{ url('/bootstrap') }}">
+        <a class="navbar-brand p-0" href="{{ url('/') }}">
             <img class="logo m-2" src="{{ asset('img/img_bs/logo.svg') }}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,10 +30,10 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav fw-bold d-flex align-items-center">
-                <li class="nav-item mx-2">
+                <li class="nav-item mx-2" hidden>
                     <a href="{{ url('/banner') }}" class="btn btn-outline-secondary border-0 px-3 py-2">Banner管理</a>
                 </li>
-                <li class="nav-item mx-2">
+                <li class="nav-item mx-2" hidden>
                     <a href="{{ url('/product') }}" class="btn btn-outline-secondary border-0 px-3 py-2">商品列表</a>
                 </li>
                 <li class="nav-item mx-2">
@@ -42,16 +42,34 @@
                 <li class="nav-item mx-2">
                     <a href="{{ url('/comment') }}" class="btn btn-outline-secondary border-0 px-3 py-2">留言板</a>
                 </li>
-                <li class="nav-item mx-2 d-flex align-items-center">
+                <li class="nav-item mx-2">
                     <a class="nav-link my-link" href="{{ url('/cart01') }}"><i
                             class="fa-solid fa-cart-shopping fs-3"></i></a>
+                </li>
+                @auth
+                    <li class="nav-item mx-2">
+                        <a class="nav-link my-link">{{ Auth::user()->name }}, 您好</a>
+                    </li>
+                    <li class="nav-item mx-2"><a class="nav-link my-link">登出<a></li>
+                @endauth
+                @guest
+                    <li class="nav-item mx-2">
+                        <a class="nav-link my-link" href="/login"><i
+                            class="fa-solid fa-circle-user fs-2"></i>登入</a>
+                    </li>
+                @endguest
+
+                {{-- <li class="nav-item mx-2 d-flex align-items-center">
+                    <a class="nav-link my-link" href="{{ url('/cart01') }}"><i
+                            class="fa-solid fa-cart-shopping fs-3"></i></a>
+
                     <a class="btn nav-link my-link dropdown-toggle ms-3" role="button" id="dropdown-1"
                         data-bs-toggle="dropdown" aria-expanded="false" href="#"><i
                             class="fa-solid fa-circle-user fs-2"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end me-2 mt-0" aria-labelledby="dropdown-1">
-                        <li><a class="dropdown-item" href="{{ url('/bs_login') }}">Login</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/login') }}">Login</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </nav>

@@ -24,10 +24,12 @@
                         <div class="border rounded">
                             <p class="my-placeholder-txt mb-0 px-3 py-2">{{ $comment->content }}</p>
                         </div>
-                        <div class="d-flex justify-content-end mb-4">
-                            <a href="/comment/delete/{{ $comment->id }}" class="btn btn-outline-danger btn-sm me-3">刪除</a>
-                            <a href="/comment/edit/{{ $comment->id }}" class="btn btn-outline-success btn-sm">編輯</a>
-                        </div>
+                        @auth
+                            <div class="d-flex justify-content-end mb-4">
+                                <a href="/comment/delete/{{ $comment->id }}" class="btn btn-outline-danger btn-sm me-3">刪除</a>
+                                <a href="/comment/edit/{{ $comment->id }}" class="btn btn-outline-success btn-sm">編輯</a>
+                            </div>
+                        @endauth
                     </div>
                 @endforeach
 

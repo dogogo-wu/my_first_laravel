@@ -13,11 +13,17 @@ class ProductController extends Controller
     public function index() {
         $productAry = Product::orderBy('id', 'desc')->get();
 
-        return view('hw_bootstrap.product.product', compact('productAry'));
+        $header = '商品管理-編輯頁';
+        $slot = '';
+
+        return view('hw_bootstrap.product.product', compact('productAry','header','slot'));
     }
 
     public function create() {
-        return view('hw_bootstrap.product.create');
+        $header = '商品管理-編輯頁';
+        $slot = '';
+
+        return view('hw_bootstrap.product.create', compact('header','slot'));
     }
 
     public function store(Request $req) {
@@ -69,7 +75,9 @@ class ProductController extends Controller
 
     public function edit($target) {
         $edited = Product::find($target);
-        return view('hw_bootstrap.product.edit', compact('edited'));
+        $header = '商品管理-編輯頁';
+        $slot = '';
+        return view('hw_bootstrap.product.edit', compact('edited', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {
