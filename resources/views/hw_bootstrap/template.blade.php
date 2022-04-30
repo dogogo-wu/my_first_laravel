@@ -50,12 +50,19 @@
                     <li class="nav-item mx-2">
                         <a class="nav-link my-link">{{ Auth::user()->name }}, 您好</a>
                     </li>
-                    <li class="nav-item mx-2"><a class="nav-link my-link">登出<a></li>
+                    <li class="nav-item mx-2">
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-secondary border-0 px-3 py-2">登出</button>
+                        </form>
+                    </li>
                 @endauth
                 @guest
                     <li class="nav-item mx-2">
-                        <a class="nav-link my-link" href="/login"><i
-                            class="fa-solid fa-circle-user fs-2"></i>登入</a>
+                        <a class="nav-link my-link " href="/login">
+                            <i class="fa-solid fa-circle-user fs-2 me-1"></i>
+                            <span>登入</span>
+                        </a>
                     </li>
                 @endguest
 
