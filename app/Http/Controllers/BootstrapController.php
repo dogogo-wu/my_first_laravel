@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\ProductImg;
 
 class BootstrapController extends Controller
 {
@@ -87,6 +88,14 @@ class BootstrapController extends Controller
         ]);
 
         return redirect('/comment');
+    }
+
+    public function into_prod_func($target) {
+
+        $prodMain = Product::find($target);
+        // $prodSecAry = ProductImg::where('product_id', $target)->get();
+
+        return view('hw_bootstrap.into_prod', compact('prodMain'));
     }
 
 }

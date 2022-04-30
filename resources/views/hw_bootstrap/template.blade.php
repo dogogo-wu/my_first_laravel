@@ -51,7 +51,7 @@
                         <a class="nav-link my-link">{{ Auth::user()->name }}, 您好</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <form action="{{route('logout')}}" method="POST">
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline-secondary border-0 px-3 py-2">登出</button>
                         </form>
@@ -179,15 +179,16 @@
 
     </footer>
 
-    {{-- Add your JS --}}
-    @yield('js')
-
+    {{-- Add your JS CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-
-    {{-- Add your JS CDN --}}
     @yield('jsCdn')
+
+    {{-- Add your JS --}}
+    @yield('js')
+
+
 
 </body>
 

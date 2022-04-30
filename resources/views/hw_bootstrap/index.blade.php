@@ -11,6 +11,11 @@
             object-fit: cover;
             object-position: center;
         }
+        #category .prodtarget:hover{
+            cursor: pointer;
+            box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
 
     </style>
 @endsection
@@ -474,8 +479,8 @@
                 <div class="row">
 
                     @foreach ($prodAry as $prod)
-                        <div class="col-xl-3 col-md-6 p-3">
-                            <div class="card border-0">
+                        <div class="col-xl-3 col-md-6 p-3 prodtarget" onclick="into_func( {{ $prod->id }} )">
+                            <div class="card border-0 ">
                                 <img src="{{ asset($prod->img) }}" class="img-fluid rounded" alt="...">
                                 <div class="card-body px-0">
                                     <h6 class="card-subtitle text-secondary mb-2 my-subtitle">CATEGORY</h6>
@@ -484,6 +489,9 @@
                                 </div>
                             </div>
                         </div>
+                        <form id="intoForm{{ $prod->id }}" action="/into_prod/{{ $prod->id }}" method="GET"
+                            hidden>
+                        </form>
                     @endforeach
 
                     {{-- @for ($i = 0; $i < 8; $i++)
@@ -624,4 +632,12 @@
         </section>
 
     </main>
+@endsection
+
+@section('js')
+    <script>
+        function into_func(myid) {
+            document.querySelector('#intoForm' + myid).submit();
+        }
+    </script>
 @endsection
