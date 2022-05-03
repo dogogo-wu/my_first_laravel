@@ -96,11 +96,16 @@
                                 <input type="password" name="password" class="form-control mb-3 in-txt"
                                     id="inputPassword" placeholder="Password">
 
-                                <label for="remember_me" class="d-flex w-100 me-auto align-items-center">
+                                <div class="d-flex w-100 me-auto align-items-center">
                                     <input id="remember_me" type="checkbox" class="me-2" name="remember">
-                                    <span class="txt-small">Remember me</span>
-                                </label>
-                                <p class="link-style ms-auto">Forgot your password?</p>
+                                    <label for="remember_me" class="txt-small">Remember me</label>
+                                </div>
+                                <br>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <a class="link-style">Forgot your password?</a>
+                                    <a href="/register" class="link-style">新用戶？點此註冊</a>
+                                </div>
+
 
                                 <div class=" w-100 p-3 pb-2 mb-5 mb-lg-0">
                                     <button type="submit"

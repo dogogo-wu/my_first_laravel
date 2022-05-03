@@ -17,11 +17,16 @@ class AccountPower
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->name == 'admin'){
+        // if(Auth::user()->name == 'admin'){
+        //     return $next($request);
+        // }else{
+        //     return redirect('/');
+        // }
+
+        if(Auth::user()->power == 1){
             return $next($request);
         }else{
             return redirect('/');
         }
-
     }
 }

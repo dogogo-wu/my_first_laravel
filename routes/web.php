@@ -7,6 +7,7 @@ use App\Http\Controllers\NewController;
 use App\Http\Controllers\BootstrapController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,18 @@ Route::prefix('/product')->middleware(['auth'])->group(function(){
     Route::get('/edit/{target}', [ProductController::class, 'edit']);
     Route::post('/update/{target}', [ProductController::class, 'update']);
     Route::delete('/del_sec_img/{sec_tar}', [ProductController::class, 'del_secimg_func']);
+});
+
+Route::prefix('/account')->middleware(['auth'])->group(function(){
+    Route::get('/', [AccountController::class, 'index']);
+
+    Route::get('/create', [AccountController::class, 'create']);
+    Route::post('/store', [AccountController::class, 'store']);
+
+    Route::post('/delete/{target}', [AccountController::class, 'delete']);
+
+    Route::get('/edit/{target}', [AccountController::class, 'edit']);
+    Route::post('/update/{target}', [AccountController::class, 'update']);
 });
 
 Route::get('/dashboard', function () {
