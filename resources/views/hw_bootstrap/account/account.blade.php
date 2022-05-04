@@ -45,7 +45,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="/account/edit/{{ $account->id }}" class="btn btn-outline-success btn-sm me-2">編輯</a>
+                                    <a href="/account/edit/{{ $account->id }}"
+                                        class="btn btn-outline-success btn-sm me-2">編輯</a>
                                     <button class="btn btn-outline-danger btn-sm"
                                         onclick="del_account({{ $account->id }})">刪除</button>
                                     <form id="delForm{{ $account->id }}" action="/account/delete/{{ $account->id }}"
@@ -68,11 +69,11 @@
             document.querySelector('#delForm' + $id).submit();
         }
     </script>
-    @if (session("success"))
-    <script>
-        alert('{{session("success")}}');
-    </script>
-@endif
+    @if (session('success'))
+        <script>
+            alert("{{ session('success') }}");
+        </script>
+    @endif
 @endsection
 
 @section('jsCdn')

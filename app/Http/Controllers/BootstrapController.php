@@ -30,7 +30,16 @@ class BootstrapController extends Controller
     }
 
     public function bsweb_cart01_func() {
-        return view('hw_bootstrap.cart_01');
+
+        if(!Auth::check()){
+
+            return redirect('/login')->with('loginFirst', '請先登入~');
+        }
+
+        $cartProdAry = ShoppingCart::where('user_id', Auth::user()->id)->get();
+
+        // dd($cartProdAry->all());
+        return view('hw_bootstrap.cart_01',compact('cartProdAry'));
     }
 
     public function bsweb_cart02_func() {

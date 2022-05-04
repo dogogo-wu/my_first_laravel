@@ -21,7 +21,7 @@ class AccountPower
         //     return $next($request);
         // }else{
         //     return redirect('/');
-        // }
+        // }                   
 
         if(Auth::user()->power == 1){
             return $next($request);

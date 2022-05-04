@@ -5,7 +5,7 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href={{asset("./css/cart.css")}}>
 @endsection
 
 @section('mainSec')
