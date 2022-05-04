@@ -68,6 +68,11 @@
             document.querySelector('#delForm' + $id).submit();
         }
     </script>
+    @if (session("success"))
+    <script>
+        alert('{{session("success")}}');
+    </script>
+@endif
 @endsection
 
 @section('jsCdn')

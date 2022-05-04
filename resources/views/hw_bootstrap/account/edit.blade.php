@@ -27,12 +27,12 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="acc_name" class="form-label my-label-txt">使用者名稱</label>
-                        <input type="text" name="acc_name" id="acc_name" class="form-control my-placeholder-txt"
+                        <label for="name" class="form-label my-label-txt">使用者名稱</label>
+                        <input type="text" name="name" id="name" class="form-control my-placeholder-txt"
                             value="{{ $edited->name }}">
                     </div>
-
-                    <select class="form-select mb-3" name="acc_power">
+                    
+                    <select class="form-select mb-3" name="power">
                         @if ($edited->power == 1)
                             <option selected value="1">管理者</option>
                             <option value="2">一般使用者</option>
@@ -44,8 +44,8 @@
                     </select>
 
                     <div class="mb-3">
-                        <label for="acc_password" class="form-label my-label-txt">新密碼</label>
-                        <input type="password" name="acc_password" id="acc_password" class="form-control my-placeholder-txt"
+                        <label for="password" class="form-label my-label-txt">新密碼</label>
+                        <input type="password" name="password" id="password" class="form-control my-placeholder-txt"
                             value="">
                     </div>
 

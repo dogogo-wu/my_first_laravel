@@ -39,6 +39,7 @@ Route::get('/microsoft', [NewController::class, 'msweb_func']);
 Route::get('/', [BootstrapController::class, 'bsweb_func']);
 
 Route::get('/into_prod/{target}', [BootstrapController::class, 'into_prod_func']);
+Route::post('/add_to_cart', [BootstrapController::class, 'add_cart_func']);
 
 Route::get('/cart01', [BootstrapController::class, 'bsweb_cart01_func']);
 Route::get('/cart02', [BootstrapController::class, 'bsweb_cart02_func']);

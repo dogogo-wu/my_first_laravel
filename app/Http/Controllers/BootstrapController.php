@@ -8,6 +8,8 @@ use App\Models\Comment;
 use App\Models\Banner;
 use App\Models\Product;
 use App\Models\ProductImg;
+use App\Models\ShoppingCart;
+use Illuminate\Support\Facades\Auth;
 
 class BootstrapController extends Controller
 {
@@ -97,5 +99,41 @@ class BootstrapController extends Controller
 
         return view('hw_bootstrap.into_prod', compact('prodMain'));
     }
+
+    public function add_cart_func(Request $req) {
+
+        $prod = Product::find($req->product_id);
+
+        if($req->add_qty > $prod->number){
+            $result = [
+                'result' => 'err',
+                'message' => '購買數量超過庫存，請聯絡客服',
+            ];
+            return $result;
+        }elseif($req->add_qty < 1){
+            $result = [
+                'result' => 'err',
+                'message' => '購買數量異常，請重新確認',
+            ];
+            return $result;
+        }
+        if(!Auth::check()){
+            $result = [
+                'result' => 'err',
+                'message' => '尚未登入，請先登入',
+            ];
+            return $result;
+        }
+        ShoppingCart::create([
+            'product_id' => $req->product_id,
+            'user_id' => Auth::user()->id,
+            'qty' => $req->add_qty,
+        ]);
+        $result = [
+            'result' => 'success',
+        ];
+        return $result;
+    }
+
 
 }

@@ -28,6 +28,22 @@
             align-items: center;
         }
 
+        .input-num {
+            width: 46px;
+            height: 30px;
+        }
+
+        .input-num::-webkit-outer-spin-button,
+        .input-num::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        .input-num[type=number] {
+            -moz-appearance: textfield;
+        }
+
     </style>
 @endsection
 
@@ -93,15 +109,22 @@
                                 <option value="XL">XL</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="d-flex justify-content-between align-items-center">
                             <p class="mt-3">剩餘數量：{{ $prodMain->number }}</p>
+
+                            <div class="d-flex pe-4 fw-bold align-items-center">
+                                <button id="minus" class="btn me-2"><i class="fa-solid fa-minus"></i></button>
+                                <input class="input-num form-control" type="number" name="qty" id="qty" value="1">
+                                <button id="plus" class="btn ms-2"><i class="fa-solid fa-plus"></i></button>
+                            </div>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h3">${{ $prodMain->price }}.00</div>
                             <div class="d-flex">
-                                <button type="button" class="btn btn-warning me-3">加入購物車</button>
-                                <button type="button" class="btn btn-danger">直接購買</button>
+                                <a href="/#category" class="btn btn-outline-success me-3">返回首頁</a>
+                                <a class="btn btn-warning me-3" onclick="add_product({{ $prodMain->id }})">加入購物車</a>
+                                {{-- <button type="button" class="btn btn-danger">直接購買</button> --}}
                                 <div
                                     class="d-flex justify-content-center align-items-center rounded-circle my-heart-bg ms-3">
                                     <i class="fa-solid fa-heart"></i>
@@ -121,6 +144,48 @@
 
 @section('js')
     <script>
+        const minus = document.querySelector('#minus');
+        const qty = document.querySelector('#qty');
+        const plus = document.querySelector('#plus');
+
+        minus.onclick = function() {
+            if (parseInt(qty.value) > 1) {
+                qty.value = parseInt(qty.value) - 1;
+            }
+
+        }
+
+        plus.onclick = function() {
+            qty.value = parseInt(qty.value) + 1;
+        }
+
+        function add_product(myid) {
+            console.log(qty.value);
+            var formData = new FormData();
+            formData.append('add_qty', parseInt(qty.value));
+            formData.append('product_id', myid);
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch('/add_to_cart', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                //Route錯誤
+                .catch(error => {
+                    alert('新增失敗，請再嘗試一次');
+                    return 'err';
+                })
+                //資料錯誤
+                .then(response => {
+                    if (response.result == 'success') {
+                        alert('新增成功');
+                    } else {
+                        alert('新增失敗：' + response.message);
+                    }
+                });
+        }
+
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: "auto",
             centeredSlides: true,

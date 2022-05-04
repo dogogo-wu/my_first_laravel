@@ -27,28 +27,28 @@ class AccountController extends Controller
 
     public function store(Request $req) {
 
-        // //輸入格式檢查 (Laravel內建方法)
-        // $req->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
-
-        //使用 validator搭配 with
-        $validator = Validator::make($req->all(), [
+        //輸入格式檢查 (Laravel內建方法)
+        $req->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        if ($validator->fails()) {
-            return redirect('account/create')->with('problem', '輸入錯誤，請重新檢查');
-        }
+        // //輸入格式檢查 (使用 validator搭配 with)
+        // $validator = Validator::make($req->all(), [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect('account/create')->with('problem', '輸入錯誤，請重新檢查');
+        // }
 
         $user = User::create([
-            'name' => $req->acc_name,
-            'email' => $req->acc_mail,
-            'password' => Hash::make($req->acc_password),
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => Hash::make($req->password),
             'power' => 1,
         ]);
 
@@ -76,11 +76,11 @@ class AccountController extends Controller
     public function update($target, Request $req) {
         $user = User::find($target);
 
-        $user->name = $req->acc_name;
-        $user->power = $req->acc_power;
+        $user->name = $req->name;
+        $user->power = $req->power;
 
-        if (Hash::needsRehash($req->acc_password)){
-            $user->password = Hash::make($req->acc_password);
+        if (Hash::needsRehash($req->password)){
+            $user->password = Hash::make($req->password);
         }
 
         $user->save();

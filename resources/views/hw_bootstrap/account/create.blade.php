@@ -21,29 +21,36 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <p class="h2 fw-bold mb-0">管理員新增</p>
                 </div>
+
+                {{-- 使用validator搭配with的方法 --}}
                 <p class="text-danger fw-bold">{{session('problem')}}</p>
+
+                {{-- Laravel 內建方法 --}}
+                @foreach ($errors->all() as $item)
+                    <p class="text-danger fw-bold">{{$item}}</p>
+                @endforeach
 
                 <form class="d-flex flex-column" action="/account/store" method="post">
                     @csrf
 
                     <div class="mb-3">
-                        <label for="acc_name" class="form-label my-label-txt">使用者名稱</label>
-                        <input type="text" name="acc_name" id="acc_name" class="form-control">
+                        <label for="name" class="form-label my-label-txt">使用者名稱</label>
+                        <input type="text" name="name" id="name" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="acc_mail" class="form-label my-label-txt">使用者信箱</label>
-                        <input type="email" name="acc_mail" id="acc_mail" class="form-control">
+                        <label for="email" class="form-label my-label-txt">使用者信箱</label>
+                        <input type="email" name="email" id="email" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="acc_password" class="form-label my-label-txt">使用者密碼</label>
-                        <input type="password" name="acc_password" id="acc_password" class="form-control">
+                        <label for="password" class="form-label my-label-txt">使用者密碼</label>
+                        <input type="password" name="password" id="password" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="check_password" class="form-label my-label-txt">確認密碼</label>
-                        <input type="password" name="check_password" id="check_password" class="form-control">
+                        <label for="password_confirmation" class="form-label my-label-txt">確認密碼</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-4">
@@ -62,8 +69,10 @@
     </script>
 @endsection
 
-@section('js')
-    <script>
-        alert('{{session("success")}}');
-    </script>
-@endsection
+{{-- @section('js')
+    @if (session("success"))
+        <script>
+            alert('{{session("success")}}');
+        </script>
+    @endif
+@endsection --}}
