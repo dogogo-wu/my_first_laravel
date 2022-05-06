@@ -77,17 +77,17 @@
                             <img class="img-detail" src={{asset($cartProd->product->img)}} alt="">
                             <div class="ms-3">
                                 <p>{{$cartProd->product->name}}</p>
-                                <p class="my-small-txt my-light-txt">#41551</p>
+                                <p class="my-small-txt my-light-txt">{{$cartProd->product->introduction}}</p>
                             </div>
                             <div class="flex-grow-1"></div>
 
                             <div class="d-flex pe-4 fw-bold">
-                                <p>-</p>
-                                <input type="text" name="" id="" value="{{$cartProd->qty}}">
-                                <p>+</p>
+                                <p onclick="minus({{$loop->index}})">-</p>
+                                <input type="text" name="" id="input{{$loop->index}}" value="{{$cartProd->qty}}">
+                                <p onclick="plus({{$loop->index}})">+</p>
                             </div>
                             <div>
-                                <p class="my-small-txt pe-4">${{$cartProd->product->price}}.00</p>
+                                <p class="my-small-txt pe-4">${{$cartProd->qty * $cartProd->product->price}}.00</p>
                             </div>
                         </div>
                         <hr>
@@ -143,6 +143,19 @@
         document.querySelector('#cnt').innerHTML = prodCnt;
         document.querySelector('#sum').innerHTML = '$' + sumPrice.toFixed(2);
         document.querySelector('#total').innerHTML = '$' + total.toFixed(2);
+
+
+        //尚未防呆，尚未傳到後台
+        function minus(myid){
+            var inputNum = document.querySelector('#input' + myid);
+            if(Number(inputNum.value) > 1){
+                inputNum.value = Number(inputNum.value) - 1;
+            }
+        }
+        function plus(myid){
+            var inputNum = document.querySelector('#input' + myid);
+            inputNum.value = Number(inputNum.value) + 1;
+        }
 
     </script>
 @endsection

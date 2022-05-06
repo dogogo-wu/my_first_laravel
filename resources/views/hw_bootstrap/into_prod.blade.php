@@ -160,7 +160,7 @@
         }
 
         function add_product(myid) {
-            console.log(qty.value);
+            // console.log(qty.value);
             var formData = new FormData();
             formData.append('add_qty', parseInt(qty.value));
             formData.append('product_id', myid);

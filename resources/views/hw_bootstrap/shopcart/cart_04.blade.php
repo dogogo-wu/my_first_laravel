@@ -172,7 +172,7 @@
                 <div class="next-area">
                     <div class="d-flex justify-content-between align-items-center">
                         <p></p>
-                        <a class="btn btn-primary px-5 my-next-btn" href="{{ url('/bootstrap') }}" role="button">返回首頁</a>
+                        <a class="btn btn-primary px-5 my-next-btn" href="/" role="button">返回首頁</a>
                     </div>
                 </div>
             </div>

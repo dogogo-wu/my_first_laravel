@@ -5,7 +5,7 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href={{asset("./css/cart.css")}}>
+    <link rel="stylesheet" href={{ asset('./css/cart.css') }}>
 @endsection
 
 @section('mainSec')
@@ -40,15 +40,13 @@
 
                     <div class="my-boxes d-flex py-4">
                         <div class="my-progress-box d-flex flex-column align-items-center">
-                            <div
-                                class="mb-2 my-num-act rounded-circle d-flex justify-content-center align-items-center">
+                            <div class="mb-2 my-num-act rounded-circle d-flex justify-content-center align-items-center">
                                 <div>1</div>
                             </div>
                             <div>確認購物車</div>
                         </div>
                         <div class="my-progress-box d-flex flex-column align-items-center">
-                            <div
-                                class="mb-2 my-num-act rounded-circle d-flex justify-content-center align-items-center">
+                            <div class="mb-2 my-num-act rounded-circle d-flex justify-content-center align-items-center">
                                 <div>2</div>
                             </div>
                             <div>付款與運送方式</div>
@@ -73,15 +71,30 @@
 
                         <p class="h4 mt-4">付款方式</p>
                         <ul class="mt-2">
-                            <li class="border-bottom border-1"><input type="radio" name="payment_type" id="id_credit"><label for="id_credit" class="ms-2">信用卡付款</label></li>
-                            <li class="border-bottom border-1"><input type="radio" name="payment_type" id="id_atm"><label for="id_atm" class="ms-2">網路 ATM</label></li>
-                            <li class=""><input type="radio" name="payment_type" id="id_shopCode"><label for="id_shopCode" class="ms-2">超商代碼</label></li>
+                            <li class="border-bottom border-1">
+                                <input type="radio" name="payment_type" id="id_credit" value="1">
+                                <label for="id_credit" class="ms-2">信用卡付款</label>
+                            </li>
+                            <li class="border-bottom border-1">
+                                <input type="radio" name="payment_type" id="id_atm" value="2">
+                                <label for="id_atm" class="ms-2">網路 ATM</label>
+                            </li>
+                            <li class="">
+                                <input type="radio" name="payment_type" id="id_shopCode" value="3">
+                                <label for="id_shopCode" class="ms-2">超商代碼</label>
+                            </li>
                         </ul>
                         <hr class="mb-0">
                         <p class="h4 mt-4">運送方式</p>
                         <ul class="mt-2">
-                            <li class="border-bottom border-1"><input type="radio" name="shipping_type" id="id_blackCat"><label for="id_blackCat" class="ms-2">黑貓宅配</label></li>
-                            <li class=""><input type="radio" name="shipping_type" id="id_shopToShop"><label for="id_shopToShop" class="ms-2">超商店到店</label></li>
+                            <li class="border-bottom border-1">
+                                <input type="radio" name="shipping_type" id="id_blackCat" value="1">
+                                <label for="id_blackCat" class="ms-2">黑貓宅配</label>
+                            </li>
+                            <li class="">
+                                <input type="radio" name="shipping_type" id="id_shopToShop" value="2">
+                                <label for="id_shopToShop" class="ms-2">超商店到店</label>
+                            </li>
                         </ul>
 
                     </form>
@@ -114,7 +127,8 @@
 
                 <div class="next-area">
                     <div class="d-flex justify-content-between align-items-center">
-                        <a class="btn btn-outline-primary px-5 my-next-btn" href="{{ url('/cart01') }}" role="button">上一步</a>
+                        <a class="btn btn-outline-primary px-5 my-next-btn" href="{{ url('/cart01') }}"
+                            role="button">上一步</a>
                         <a class="btn btn-primary px-5 my-next-btn" href="{{ url('/cart03') }}" role="button">下一步</a>
                     </div>
                 </div>
@@ -122,4 +136,3 @@
         </section>
     </main>
 @endsection
-

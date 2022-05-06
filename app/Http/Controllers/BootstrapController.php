@@ -29,31 +29,6 @@ class BootstrapController extends Controller
         return view('hw_bootstrap.index', compact('mydataAry', 'prodAry', 'prodRnd', 'banAry'));
     }
 
-    public function bsweb_cart01_func() {
-
-        if(!Auth::check()){
-
-            return redirect('/login')->with('loginFirst', '請先登入~');
-        }
-
-        $cartProdAry = ShoppingCart::where('user_id', Auth::user()->id)->get();
-
-        // dd($cartProdAry->all());
-        return view('hw_bootstrap.cart_01',compact('cartProdAry'));
-    }
-
-    public function bsweb_cart02_func() {
-        return view('hw_bootstrap.cart_02');
-    }
-
-    public function bsweb_cart03_func() {
-        return view('hw_bootstrap.cart_03');
-    }
-
-    public function bsweb_cart04_func() {
-        return view('hw_bootstrap.cart_04');
-    }
-
     public function bsweb_comment_func() {
         // $commentAry = DB::table('comments')->orderBy('id', 'desc')->get();
         $commentAry = Comment::orderBy('id', 'desc')->get();

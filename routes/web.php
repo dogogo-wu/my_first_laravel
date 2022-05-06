@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\BootstrapController;
+use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +43,12 @@ Route::get('/', [BootstrapController::class, 'bsweb_func']);
 Route::get('/into_prod/{target}', [BootstrapController::class, 'into_prod_func']);
 Route::post('/add_to_cart', [BootstrapController::class, 'add_cart_func']);
 
-Route::get('/cart01', [BootstrapController::class, 'bsweb_cart01_func']);
-Route::get('/cart02', [BootstrapController::class, 'bsweb_cart02_func']);
-Route::get('/cart03', [BootstrapController::class, 'bsweb_cart03_func']);
-Route::get('/cart04', [BootstrapController::class, 'bsweb_cart04_func']);
-
+Route::middleware(['auth'])->group(function(){
+    Route::get('/cart01', [ShoppingController::class, 'bsweb_cart01_func']);
+    Route::get('/cart02', [ShoppingController::class, 'bsweb_cart02_func']);
+    Route::get('/cart03', [ShoppingController::class, 'bsweb_cart03_func']);
+    Route::get('/cart04', [ShoppingController::class, 'bsweb_cart04_func']);
+});
 
 Route::prefix('/comment')->group(function(){
     Route::get('/', [BootstrapController::class, 'bsweb_comment_func']);
@@ -88,6 +91,13 @@ Route::prefix('/account')->middleware(['auth'])->group(function(){
 
     Route::get('/edit/{target}', [AccountController::class, 'edit']);
     Route::post('/update/{target}', [AccountController::class, 'update']);
+});
+
+Route::prefix('/order')->middleware(['auth'])->group(function(){
+    Route::get('/', [OrderController::class, 'index']);
+
+    Route::get('/edit/{target}', [OrderController::class, 'edit']);
+    Route::post('/update/{target}', [OrderController::class, 'update']);
 });
 
 Route::get('/dashboard', function () {

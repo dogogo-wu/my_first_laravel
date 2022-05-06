@@ -16,6 +16,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return route('login');
+            // return redirect('login')->with('message', '請先登入');   //不能用
         }
     }
 }
