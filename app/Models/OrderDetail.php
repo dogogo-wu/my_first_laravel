@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
+use App\Models\Product;
 
 /**
  * @property integer $id
@@ -27,4 +28,15 @@ class OrderDetail extends Model
      * @var array
      */
     protected $fillable = ['created_at', 'updated_at', 'product_id', 'price', 'qty', 'order_id'];
+
+
+    public function order(){
+        return $this->belongsTo(Oreder::class, 'order_id', 'id');
+    }
+
+    public function product(){
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
+
+

@@ -45,9 +45,9 @@ Route::post('/add_to_cart', [BootstrapController::class, 'add_cart_func']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/cart01', [ShoppingController::class, 'bsweb_cart01_func']);
-    Route::get('/cart02', [ShoppingController::class, 'bsweb_cart02_func']);
-    Route::get('/cart03', [ShoppingController::class, 'bsweb_cart03_func']);
-    Route::get('/cart04', [ShoppingController::class, 'bsweb_cart04_func']);
+    Route::post('/cart02', [ShoppingController::class, 'bsweb_cart02_func']);
+    Route::post('/cart03', [ShoppingController::class, 'bsweb_cart03_func']);
+    Route::post('/cart04', [ShoppingController::class, 'bsweb_cart04_func']);
 });
 
 Route::prefix('/comment')->group(function(){
