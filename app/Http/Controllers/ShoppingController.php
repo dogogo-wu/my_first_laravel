@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShoppingCart;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 
 class ShoppingController extends Controller
@@ -26,6 +28,8 @@ class ShoppingController extends Controller
         session([
             'amount' => $qty
         ]);
+
+
         return view('hw_bootstrap.shopcart.cart_02');
     }
 
@@ -36,12 +40,63 @@ class ShoppingController extends Controller
             'pay' => $req->payment_type,
             'deliver'=> $req->shipping_type,
         ]);
-        return view('hw_bootstrap.shopcart.cart_03');
+        $deliver = $req->shipping_type;
+        return view('hw_bootstrap.shopcart.cart_03', compact('deliver'));
     }
 
     public function bsweb_cart04_func(Request $req) {
-        dump(session()->all());
-        dd($req->all());
-        return view('hw_bootstrap.shopcart.cart_04');
+        // dump(session()->all());
+        // dd($req->all());
+
+        $cartAry = ShoppingCart::where('user_id', Auth::id())->get();
+        $subtot = 0;
+
+        foreach ($cartAry as $key => $cart) {
+            $subtot += $cart->product->price * session()->get('amount')[$key];
+        }
+
+        if(session()->get('deliver')=='1'){
+            $fee = 150;
+        }else{
+            $fee = 60;
+        }
+
+        $order = Order::create([
+            'subtotal' => $subtot,
+            'ship_fee' => $fee,
+            'total' => $subtot + $fee,
+            'qty_all' => count(session()->get('amount')),
+            'name' => $req->myName,
+            'phone' => $req->myPhone,
+            'email' => $req->myEmail,
+            'payment' => session()->get('pay'),
+            'ship_method' => session()->get('deliver'),
+            'status' => 1,
+            'user_id' => Auth::id(),
+        ]);
+
+        if($order->ship_method == 1){
+            $order->addr = $req->myAreaCode.$req->myCity.$req->myAddr;
+        }else{
+            $order->ship_store = $req->myAreaCode.$req->myCity.$req->myAddr;
+        }
+
+        $order->save();
+        // dd($order);
+
+        foreach ($cartAry as $key => $value) {
+            OrderDetail::create([
+                'product_id' => $value->product->id,
+                'price' => $value->product->price,
+                'qty' => $value->qty,
+                'order_id' => $order->id,
+            ]);
+        }
+
+        return redirect('/show_order/'.$order->id);
+    }
+    public function show_order($target){
+        $order = Order::find($target);
+        return view('hw_bootstrap.shopcart.cart_04', compact('order'));
     }
 }

@@ -47,6 +47,14 @@
                             class="fa-solid fa-cart-shopping fs-3"></i></a>
                 </li>
                 @auth
+                    @if (Auth::user()->power == 1)
+                        <li class="nav-item mx-2">
+                            <a href="{{ url('/dashboard') }}" class="btn btn-outline-secondary border-0 px-3 py-2">後台</a>
+                        </li>
+                    @endif
+                @endauth
+
+                @auth
                     <li class="nav-item mx-2">
                         <a class="nav-link my-link">{{ Auth::user()->name }}, 您好</a>
                     </li>

@@ -39,7 +39,7 @@ class Order extends Model
     protected $fillable = ['created_at', 'updated_at', 'subtotal', 'ship_fee', 'total', 'qty_all', 'name', 'phone', 'email', 'addr', 'payment', 'ship_method', 'ship_store', 'status', 'ps', 'user_id'];
 
     public function detail(){
-        return $this->hasMany(OrederDetail::class, 'order_id', 'id');
+        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
     }
 
     public function user(){

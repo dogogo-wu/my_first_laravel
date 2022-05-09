@@ -26,9 +26,10 @@
                     <thead>
                         <tr>
                             <th>訂單編號</th>
+                            <th>購買人</th>
+                            <th>信箱</th>
                             <th>總金額</th>
                             <th>狀態</th>
-                            <th>備註</th>
                             <th>功能</th>
                         </tr>
                     </thead>
@@ -36,6 +37,8 @@
                         @foreach ($orderAry as $order)
                             <tr>
                                 <td>{{ $order->id }}</td>
+                                <td>{{ $order->name }}</td>
+                                <td>{{ $order->email }}</td>
                                 <td>{{ $order->total }}</td>
                                 <td>
                                     @switch($order->status)
@@ -63,10 +66,9 @@
                                             發生錯誤
                                     @endswitch
                                 </td>
-                                <td>{{ $order->ps }}</td>
                                 <td>
                                     <a href="/order/edit/{{ $order->id }}"
-                                        class="btn btn-outline-success btn-sm me-2">查看</a>
+                                        class="btn btn-outline-success btn-sm me-2">修改狀態</a>
                                 </td>
                             </tr>
                         @endforeach

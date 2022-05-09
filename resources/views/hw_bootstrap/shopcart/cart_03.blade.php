@@ -89,7 +89,13 @@
                                 placeholder="abc123@gmail.com">
                         </div>
                         <div class="mb-3">
-                            <label for="myCity" class="form-label my-label-txt">地址</label>
+                            <label for="myCity" class="form-label my-label-txt">
+                                @if($deliver == 1)
+                                    地址
+                                @else
+                                    超商地址
+                                @endif
+                            </label>
                             <div class="row mb-2">
                                 <div class="col-6 pe-1">
                                     <input type="text" name="myCity" class="form-control my-placeholder-txt col-6" id="myCity"
