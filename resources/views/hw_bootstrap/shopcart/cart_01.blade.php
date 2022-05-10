@@ -136,6 +136,7 @@
 @section('js')
     <script>
         var objAry = {!! json_encode($cartProdAry) !!};
+        // console.log(objAry);
         var prodCnt = 0;
         var sumPrice = 0;
         objAry.forEach(element => {

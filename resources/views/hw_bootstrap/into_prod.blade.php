@@ -156,7 +156,9 @@
         }
 
         plus.onclick = function() {
-            qty.value = parseInt(qty.value) + 1;
+            if (parseInt(qty.value) < {!! $prodMain->number !!}) {
+                qty.value = parseInt(qty.value) + 1;
+            }
         }
 
         function add_product(myid) {
@@ -173,15 +175,17 @@
                 .then(response => response.json())
                 //Route錯誤
                 .catch(error => {
-                    alert('新增失敗，請再嘗試一次');
+                    alert('新增失敗 (路由問題) ，請再嘗試一次~');
                     return 'err';
                 })
                 //資料錯誤
                 .then(response => {
-                    if (response.result == 'success') {
-                        alert('新增成功');
-                    } else {
-                        alert('新增失敗：' + response.message);
+                    if (response != 'err') {
+                        if (response.result == 'success') {
+                            alert('新增成功！');
+                        } else {
+                            alert('新增失敗：' + response.message);
+                        }
                     }
                 });
         }
