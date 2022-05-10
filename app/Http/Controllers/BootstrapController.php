@@ -9,6 +9,7 @@ use App\Models\Banner;
 use App\Models\Product;
 use App\Models\ProductImg;
 use App\Models\ShoppingCart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class BootstrapController extends Controller
@@ -117,6 +118,11 @@ class BootstrapController extends Controller
             'result' => 'success',
         ];
         return $result;
+    }
+
+    public function order_list() {
+        $orderAry = Order::where('user_id', Auth::id())->get();
+        return view('hw_bootstrap.order_list', compact('orderAry'));
     }
 
 

@@ -16,24 +16,19 @@ class OrderController extends Controller
         return view('hw_bootstrap.order.order', compact('orderAry','header','slot'));
     }
     public function edit($target) {
-        $edited = Order::find($target);
+        $order = Order::find($target);
         $header = '訂單管理-編輯頁';
         $slot = '';
-        return view('hw_bootstrap.order.edit', compact('edited', 'header', 'slot'));
+        return view('hw_bootstrap.order.edit01', compact('order', 'header', 'slot'));
     }
     public function update($target, Request $req) {
-        // $user = User::find($target);
 
-        // $user->name = $req->name;
-        // $user->power = $req->power;
+        $order = Order::find($target);
+        $order->status = $req->status;
+        $order->ps = $req->ps;
+        $order->save();
 
-        // if (Hash::needsRehash($req->password)){
-        //     $user->password = Hash::make($req->password);
-        // }
-
-        // $user->save();
-
-        // return redirect('/account');
+        return redirect('/order');
     }
 
 }

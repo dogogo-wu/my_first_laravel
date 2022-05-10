@@ -76,7 +76,8 @@
                         <p class="h4 mt-4">寄送資料</p>
                         <div class="mb-3">
                             <label for="myName" class="form-label my-label-txt">姓名</label>
-                            <input type="text" name="myName" class="form-control my-placeholder-txt" id="myName" placeholder="王小明">
+                            <input type="text" name="myName" class="form-control my-placeholder-txt" id="myName"
+                                placeholder="王小明">
                         </div>
                         <div class="mb-3">
                             <label for="myPhone" class="form-label my-label-txt">電話</label>
@@ -90,7 +91,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="myCity" class="form-label my-label-txt">
-                                @if($deliver == 1)
+                                @if ($deliver == 1)
                                     地址
                                 @else
                                     超商地址
@@ -98,15 +99,16 @@
                             </label>
                             <div class="row mb-2">
                                 <div class="col-6 pe-1">
-                                    <input type="text" name="myCity" class="form-control my-placeholder-txt col-6" id="myCity"
-                                        placeholder="城市">
+                                    <input type="text" name="myCity" class="form-control my-placeholder-txt col-6"
+                                        id="myCity" placeholder="城市">
                                 </div>
                                 <div class="col-6 ps-1">
-                                    <input type="text" name="myAreaCode" class="form-control my-placeholder-txt col-6" id="myAreaCode"
-                                        placeholder="郵遞區號">
+                                    <input type="text" name="myAreaCode" class="form-control my-placeholder-txt col-6"
+                                        id="myAreaCode" placeholder="郵遞區號">
                                 </div>
                             </div>
-                            <input type="text" name="myAddr" class="form-control my-placeholder-txt" id="myAddr" placeholder="地址">
+                            <input type="text" name="myAddr" class="form-control my-placeholder-txt" id="myAddr"
+                                placeholder="地址">
                         </div>
                     </div>
                     <hr>
@@ -136,7 +138,9 @@
 
                     <div class="next-area">
                         <div class="d-flex justify-content-between align-items-center">
-                            <a class="btn btn-outline-primary px-5 my-next-btn" href="{{ url('/cart02') }}"
+                            {{-- <a class="btn btn-outline-primary px-5 my-next-btn" href="{{ url('/cart02') }}"
+                                role="button">上一步</a> --}}
+                            <a class="btn btn-outline-primary px-5 my-next-btn" href="#"
                                 role="button">上一步</a>
                             <button type="submit" class="btn btn-primary px-5 my-next-btn">前往付款</button>
                         </div>

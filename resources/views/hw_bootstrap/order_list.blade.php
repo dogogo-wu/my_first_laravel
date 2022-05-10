@@ -1,8 +1,7 @@
-{{-- @extends('hw_bootstrap.template') --}}
-@extends('layouts.app')
+@extends('hw_bootstrap.template')
 
 @section('pageTittle')
-    Order
+    Order-User-Watch
 @endsection
 
 @section('cssLink')
@@ -19,10 +18,10 @@
         <section id="cart-sec" class="py-5">
             <div class="container my-cart-con ">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <p class="h2 fw-bold mb-0">訂單管理</p>
+                    <p class="h2 fw-bold mb-0">訂單列表</p>
                 </div>
 
-                <table id="account_list" class="display">
+                <table id="order_list" class="display">
                     <thead>
                         <tr>
                             <th>訂單編號</th>
@@ -67,8 +66,9 @@
                                     @endswitch
                                 </td>
                                 <td>
-                                    <button onclick="location.href='/order/edit/{{$order->id}}'"
-                                        class="btn btn-success btn-sm me-2">修改狀態</button>
+                                    <button  onclick="location.href='/show_order/{{$order->id}}'"
+                                        class="btn btn-success btn-sm me-2">查看訂單</button>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -89,7 +89,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#account_list').DataTable();
+            $('#order_list').DataTable();
         });
     </script>
 @endsection

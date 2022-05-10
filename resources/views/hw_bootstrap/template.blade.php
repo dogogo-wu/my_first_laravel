@@ -47,11 +47,9 @@
                             class="fa-solid fa-cart-shopping fs-3"></i></a>
                 </li>
                 @auth
-                    @if (Auth::user()->power == 1)
-                        <li class="nav-item mx-2">
-                            <a href="{{ url('/dashboard') }}" class="btn btn-outline-secondary border-0 px-3 py-2">後台</a>
-                        </li>
-                    @endif
+                    <li class="nav-item mx-2">
+                        <a href="{{ url('/order_list') }}" class="btn btn-outline-secondary border-0 px-3 py-2">訂單列表</a>
+                    </li>
                 @endauth
 
                 @auth
@@ -64,6 +62,11 @@
                             <button type="submit" class="btn btn-outline-secondary border-0 px-3 py-2">登出</button>
                         </form>
                     </li>
+                    @if (Auth::user()->power == 1)
+                        <li class="nav-item mx-2">
+                            <a href="{{ url('/dashboard') }}" class="btn btn-outline-secondary border-0 px-3 py-2">後台</a>
+                        </li>
+                    @endif
                 @endauth
                 @guest
                     <li class="nav-item mx-2">

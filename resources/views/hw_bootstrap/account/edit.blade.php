@@ -27,30 +27,33 @@
                     @csrf
 
                     <div class="mb-3">
+                        <label for="mail" class="form-label my-label-txt">使用者帳號</label>
+                        <input type="email" id="mail" readonly value="{{ $edited->email }}"
+                            class="form-control my-placeholder-txt">
+                    </div>
+
+                    <div class="mb-3">
                         <label for="name" class="form-label my-label-txt">使用者名稱</label>
                         <input type="text" name="name" id="name" class="form-control my-placeholder-txt"
                             value="{{ $edited->name }}">
                     </div>
-                    
-                    <select class="form-select mb-3" name="power">
-                        @if ($edited->power == 1)
-                            <option selected value="1">管理者</option>
-                            <option value="2">一般使用者</option>
-                        @else
-                            <option value="1">管理者</option>
-                            <option selected value="2">一般使用者</option>
-                        @endif
-
-                    </select>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label my-label-txt">新密碼</label>
+                        <label for="password" class="form-label my-label-txt">使用者密碼</label>
                         <input type="password" name="password" id="password" class="form-control my-placeholder-txt"
-                            value="">
+                            value="{{ $edited->password }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="power">使用者權限</label>
+                        <select class="form-select mb-3" name="power" id="power">
+                            <option value="1" @if ($edited->power == 1) selected @endif>管理者</option>
+                            <option value="2" @if ($edited->power == 2) selected @endif>一般會員</option>
+                        </select>
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-4">
-                        <input type="reset" value="重做" class="btn btn-secondary px-4 mx-2 my-next-btn">
+                        <button class="btn btn-secondary px-4 mx-2 my-next-btn" onclick="location.href='/account'">取消</button>
                         <input type="submit" value="送出" class="btn btn-primary px-4 mx-2 my-next-btn">
                     </div>
                 </form>

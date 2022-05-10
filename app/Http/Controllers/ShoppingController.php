@@ -29,6 +29,15 @@ class ShoppingController extends Controller
             'amount' => $qty
         ]);
 
+        // // 不使用session 直接將新數量寫入購物車(待買清單)的資料表
+        // $shopping = ShoppingCart::where('user_id', Auth::id())->get();
+
+        // //事先將新的數量更新至資料表中
+        // foreach ($shopping as $key => $item) {
+        //     $item->qty = $request->qty[$key];
+        //     $item->save();
+        // }
+
 
         return view('hw_bootstrap.shopcart.cart_02');
     }
@@ -93,8 +102,14 @@ class ShoppingController extends Controller
             ]);
         }
 
+        // 訂單建立成功, 將購物車資料清除
+        ShoppingCart::where('user_id', Auth::id())->delete();
+
+        // 為了不要F5的時候，重複送出
         return redirect('/show_order/'.$order->id);
     }
+
+    // 為了不要F5的時候，重複送出
     public function show_order($target){
         $order = Order::find($target);
         return view('hw_bootstrap.shopcart.cart_04', compact('order'));
