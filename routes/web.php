@@ -47,6 +47,7 @@ Route::get('/order_list', [BootstrapController::class, 'order_list']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/cart01', [ShoppingController::class, 'bsweb_cart01_func']);
+    Route::delete('/cart01/delete/{target}', [ShoppingController::class, 'cart01_del_func']);
     Route::post('/cart02', [ShoppingController::class, 'bsweb_cart02_func']);
     Route::post('/cart03', [ShoppingController::class, 'bsweb_cart03_func']);
     Route::post('/cart04', [ShoppingController::class, 'bsweb_cart04_func']);

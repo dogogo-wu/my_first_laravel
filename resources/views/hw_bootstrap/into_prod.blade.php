@@ -122,7 +122,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h3">${{ $prodMain->price }}.00</div>
                             <div class="d-flex">
-                                <a href="/#category" class="btn btn-outline-success me-3">返回首頁</a>
+                                <a href="/#category" class="btn btn-outline-success me-3">返回購物</a>
                                 <a class="btn btn-warning me-3" onclick="add_product({{ $prodMain->id }})">加入購物車</a>
                                 {{-- <button type="button" class="btn btn-danger">直接購買</button> --}}
                                 <div

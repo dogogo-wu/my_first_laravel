@@ -6,6 +6,24 @@
 
 @section('cssLink')
     <link rel="stylesheet" href={{ asset('./css/cart.css') }}>
+    <style>
+        .qty {
+            width: 18px !important;
+            height: unset !important;
+        }
+
+        .qty::-webkit-outer-spin-button,
+        .qty::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        .qty[type=number] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
 @endsection
 
 
@@ -74,24 +92,36 @@
                         <p class="h4 mb-4">訂單明細</p>
 
                         @foreach ($cartProdAry as $cartProd)
-                            <div class="d-flex align-items-center pt-4">
-                                <img class="img-detail" src={{ asset($cartProd->product->img) }} alt="">
-                                <div class="ms-3">
-                                    <p>{{ $cartProd->product->name }}</p>
-                                    <p class="my-small-txt my-light-txt">{{ $cartProd->product->introduction }}</p>
-                                </div>
-                                <div class="flex-grow-1"></div>
+                            <div id="cartprod_div{{ $cartProd->id }}">
+                                <div class="d-flex align-items-center pt-4">
+                                    <img class="img-detail" src={{ asset($cartProd->product->img) }} alt="">
+                                    <div class="ms-3">
+                                        <p class="attach" data-prod_qty="{{ $cartProd->product->number }}"
+                                            data-prod_price="{{ $cartProd->product->price }}">
+                                            {{ $cartProd->product->name }}</p>
+                                        <p class="my-small-txt my-light-txt">{{ $cartProd->product->introduction }}</p>
+                                    </div>
+                                    <div class="flex-grow-1"></div>
 
-                                <div class="d-flex pe-4 fw-bold">
-                                    <p onclick="minus({{ $loop->index }})">-</p>
-                                    <input type="text" name="qty[]" id="input{{ $loop->index }}" value="{{ $cartProd->qty }}">
-                                    <p onclick="plus({{ $loop->index }})">+</p>
+                                    <div class="d-flex pe-4 fw-bold align-items-center">
+                                        <button class="minus btn" type="button"><i
+                                                class="fa-solid fa-minus small"></i></button>
+                                        <input type="number" name="qty[]" class="qty"
+                                            value="{{ $cartProd->qty }}" readonly>
+                                        <button class="plus btn" type="button"><i
+                                                class="fa-solid fa-plus small"></i></button>
+                                    </div>
+                                    <div>
+                                        <p class="my-small-txt pe-4 prod_price">
+                                            ${{ $cartProd->qty * $cartProd->product->price }}</p>
+                                    </div>
+                                    <button class="btn btn-outline-danger btn-sm"
+                                        onclick="del_cartprod({{ $cartProd->id }})" type="button">
+                                        刪除
+                                    </button>
                                 </div>
-                                <div>
-                                    <p class="my-small-txt pe-4">${{ $cartProd->qty * $cartProd->product->price }}.00</p>
-                                </div>
+                                <hr>
                             </div>
-                            <hr>
                         @endforeach
 
                     </div>
@@ -108,7 +138,7 @@
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">運費:</p>
-                                <p class="fw-bold">$100.00</p>
+                                <p id="ship_fee" class="fw-bold">$100.00</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">總計:</p>
@@ -135,32 +165,99 @@
 
 @section('js')
     <script>
-        var objAry = {!! json_encode($cartProdAry) !!};
-        // console.log(objAry);
-        var prodCnt = 0;
+        // ---------------- Selector ---------------- //
+        var minus = document.querySelectorAll('.minus');
+        var plus = document.querySelectorAll('.plus');
+        var qty = document.querySelectorAll('.qty');
+        var prod_price = document.querySelectorAll('.prod_price');
+
+        //使用data-屬性帶資料，再用JS抓
+        var attach = document.querySelectorAll('.attach');
+
+
+        // ---------------- Init Value ---------------- //
+
+        var ship_fee = 150;
         var sumPrice = 0;
-        objAry.forEach(element => {
-            prodCnt += Number(element.qty);
-            sumPrice += Number(element.qty) * Number(element.product.price);
-        });
-        var total = sumPrice + 100;
 
-        document.querySelector('#cnt').innerHTML = prodCnt;
-        document.querySelector('#sum').innerHTML = '$' + sumPrice.toFixed(2);
-        document.querySelector('#total').innerHTML = '$' + total.toFixed(2);
+        // // 使用json_encode取資料 (會出錯，無法做關聯)
+        // var objAry = {!! json_encode($cartProdAry) !!};
+        // console.log(objAry);
 
+        // objAry.forEach(element => {
+        //     sumPrice += parseInt(element.qty) * parseInt(element.product.price);
+        // });
+        // var total = sumPrice + ship_fee;
 
-        //尚未防呆，尚未傳到後台
-        function minus(myid) {
-            var inputNum = document.querySelector('#input' + myid);
-            if (Number(inputNum.value) > 1) {
-                inputNum.value = Number(inputNum.value) - 1;
+        refresh();
+
+        // ---------------- Plus and Minus ---------------- //
+
+        for (let i = 0; i < minus.length; i++) {
+            minus[i].onclick = () => {
+                if (parseInt(qty[i].value) > 1) {
+                    qty[i].value = parseInt(qty[i].value) - 1;
+
+                    prod_price[i].innerHTML = '$' + parseInt(attach[i].dataset.prod_price) * parseInt(qty[i]
+                        .value);
+
+                    refresh();
+                }
+            }
+            plus[i].onclick = () => {
+                if (parseInt(qty[i].value) < parseInt(attach[i].dataset.prod_qty)) {
+                    qty[i].value = parseInt(qty[i].value) + 1;
+
+                    prod_price[i].innerHTML = '$' + parseInt(attach[i].dataset.prod_price) * parseInt(qty[i]
+                        .value);
+
+                    refresh();
+                }
             }
         }
 
-        function plus(myid) {
-            var inputNum = document.querySelector('#input' + myid);
-            inputNum.value = Number(inputNum.value) + 1;
+        function reSelect() {
+            minus = document.querySelectorAll('.minus');
+            plus = document.querySelectorAll('.plus');
+            qty = document.querySelectorAll('.qty');
+            prod_price = document.querySelectorAll('.prod_price');
+            attach = document.querySelectorAll('.attach');
+        }
+
+        function refresh() {
+            sumPrice = 0;
+
+            for (let i = 0; i < minus.length; i++) {
+                sumPrice += parseInt(attach[i].dataset.prod_price) * parseInt(qty[i]
+                    .value);
+            }
+
+            var prodCnt = minus.length;
+            var total = sumPrice + ship_fee;
+            document.querySelector('#cnt').innerHTML = prodCnt;
+            document.querySelector('#sum').innerHTML = '$' + sumPrice;
+            document.querySelector('#total').innerHTML = '$' + total;
+            document.querySelector('#ship_fee').innerHTML = '$' + ship_fee;
+        }
+
+        function del_cartprod(myid) {
+            //---------- 使用Fetch時，刪除的方法 ----------//
+            let formData = new FormData();
+            formData.append('_method', 'DELETE');
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch("/cart01/delete/" + myid, {
+                method: "POST",
+                body: formData
+            }).then(function(response) {
+                //------ 子方法2，使用javescript刪除元件 ------//
+                let ele = document.querySelector('#cartprod_div' + myid);
+                ele.remove();
+                reSelect();
+                refresh();
+            })
+
+
         }
     </script>
 @endsection

@@ -77,17 +77,17 @@
                         <div class="mb-3">
                             <label for="myName" class="form-label my-label-txt">姓名</label>
                             <input type="text" name="myName" class="form-control my-placeholder-txt" id="myName"
-                                placeholder="王小明">
+                                placeholder="王小明" required>
                         </div>
                         <div class="mb-3">
                             <label for="myPhone" class="form-label my-label-txt">電話</label>
                             <input type="text" name="myPhone" class="form-control my-placeholder-txt" id="myPhone"
-                                placeholder="0912345678">
+                                placeholder="0912345678" required>
                         </div>
                         <div class="mb-3">
                             <label for="myEmail" class="form-label my-label-txt">Email</label>
                             <input type="email" name="myEmail" class="form-control my-placeholder-txt" id="myEmail"
-                                placeholder="abc123@gmail.com">
+                                placeholder="abc123@gmail.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="myCity" class="form-label my-label-txt">
@@ -100,15 +100,15 @@
                             <div class="row mb-2">
                                 <div class="col-6 pe-1">
                                     <input type="text" name="myCity" class="form-control my-placeholder-txt col-6"
-                                        id="myCity" placeholder="城市">
+                                        id="myCity" placeholder="城市" required>
                                 </div>
                                 <div class="col-6 ps-1">
                                     <input type="text" name="myAreaCode" class="form-control my-placeholder-txt col-6"
-                                        id="myAreaCode" placeholder="郵遞區號">
+                                        id="myAreaCode" placeholder="郵遞區號" required>
                                 </div>
                             </div>
                             <input type="text" name="myAddr" class="form-control my-placeholder-txt" id="myAddr"
-                                placeholder="地址">
+                                placeholder="地址" required>
                         </div>
                     </div>
                     <hr>

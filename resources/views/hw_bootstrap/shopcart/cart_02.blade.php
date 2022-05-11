@@ -73,7 +73,7 @@
                         <p class="h4 mt-4">付款方式</p>
                         <ul class="mt-2">
                             <li class="border-bottom border-1">
-                                <input type="radio" name="payment_type" id="id_credit" value="1">
+                                <input type="radio" name="payment_type" id="id_credit" value="1" required>
                                 <label for="id_credit" class="ms-2">信用卡付款</label>
                             </li>
                             <li class="border-bottom border-1">
@@ -89,7 +89,7 @@
                         <p class="h4 mt-4">運送方式</p>
                         <ul class="mt-2">
                             <li class="border-bottom border-1">
-                                <input type="radio" name="shipping_type" id="id_blackCat" value="1">
+                                <input type="radio" name="shipping_type" id="id_blackCat" value="1" required>
                                 <label for="id_blackCat" class="ms-2">黑貓宅配</label>
                             </li>
                             <li class="">
@@ -105,19 +105,19 @@
                         <div class="d-flex flex-column align-items-end mt-4">
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">數量:</p>
-                                <p class="fw-bold">3</p>
+                                <p id="cnt" class="fw-bold">{{ count($cartProdAry) }}</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">小計:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p id="sum" class="fw-bold">$24.90</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">運費:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p id="ship_fee" class="fw-bold">$100.00</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">總計:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p id="total" class="fw-bold">$24.90</p>
                             </div>
                         </div>
                     </div>
@@ -135,4 +135,19 @@
             </form>
         </section>
     </main>
+@endsection
+
+@section('js')
+    <script>
+
+        var ship_fee = 150;
+        var sumPrice = 0;
+        var total = 0;
+
+        total = sumPrice + ship_fee;
+
+        document.querySelector('#sum').innerHTML = '$' + sumPrice;
+        document.querySelector('#total').innerHTML = '$' + total;
+        document.querySelector('#ship_fee').innerHTML = '$' + ship_fee;
+    </script>
 @endsection
