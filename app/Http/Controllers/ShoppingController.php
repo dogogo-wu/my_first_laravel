@@ -35,16 +35,23 @@ class ShoppingController extends Controller
         // 不使用session 直接將新數量寫入購物車(待買清單)的資料表
         $cartProdAry = ShoppingCart::where('user_id', Auth::id())->get();
 
-        //事先將新的數量更新至資料表中
+        // 事先將新的數量更新至資料表中
         foreach ($cartProdAry as $key => $item) {
             $item->qty = $req->qty[$key];
             $item->save();
         }
 
-        // dd($cartProdAry[0]->qty);
+        // 先算好小計，直接傳到前面
+        $subtot = 0;
+        foreach ($cartProdAry as $cart) {
+            $subtot += $cart->product->price * $cart->qty;
+        }
+        session([
+            'mysubtot' => $subtot,
+        ]);
 
 
-        return view('hw_bootstrap.shopcart.cart_02', compact('cartProdAry'));
+        return view('hw_bootstrap.shopcart.cart_02', compact('cartProdAry','subtot'));
     }
 
     public function bsweb_cart03_func(Request $req) {
@@ -54,8 +61,23 @@ class ShoppingController extends Controller
             'pay' => $req->payment_type,
             'deliver'=> $req->shipping_type,
         ]);
+
+        $cartProdAry = ShoppingCart::where('user_id', Auth::id())->get();
+
         $deliver = $req->shipping_type;
-        return view('hw_bootstrap.shopcart.cart_03', compact('deliver'));
+
+        if ($deliver == 1) {
+            $shipfee = 150;
+        }else{
+            $shipFee = 60;
+        }
+        $myAry = [
+            'subtot' => session()->get('mysubtot'),
+            'shipfee' => $shipFee,
+            'prodcate' => count($cartProdAry),
+        ];
+
+        return view('hw_bootstrap.shopcart.cart_03', compact('deliver','myAry'));
     }
 
     public function bsweb_cart04_func(Request $req) {

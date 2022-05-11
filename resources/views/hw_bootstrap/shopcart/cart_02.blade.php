@@ -109,7 +109,7 @@
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">小計:</p>
-                                <p id="sum" class="fw-bold">$24.90</p>
+                                <p id="sum" class="fw-bold">{{ $subtot }}</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">運費:</p>
@@ -139,15 +139,42 @@
 
 @section('js')
     <script>
+        const sum_Sel = document.querySelector('#sum');
+        const shipfee_Sel = document.querySelector('#ship_fee');
+        const total_Sel = document.querySelector('#total');
 
         var ship_fee = 150;
-        var sumPrice = 0;
+        var sumPrice = parseInt(sum_Sel.innerHTML);
         var total = 0;
 
         total = sumPrice + ship_fee;
 
-        document.querySelector('#sum').innerHTML = '$' + sumPrice;
-        document.querySelector('#total').innerHTML = '$' + total;
-        document.querySelector('#ship_fee').innerHTML = '$' + ship_fee;
+        sum_Sel.innerHTML = '$' + sumPrice;
+        shipfee_Sel.innerHTML = '$' + ship_fee;
+        total_Sel.innerHTML = '$' + total;
+
+        const blackCat = document.querySelector('#id_blackCat');
+        const shopToShop = document.querySelector('#id_shopToShop');
+
+        var ship_sel = document.querySelectorAll('input[name="shipping_type"]');
+        ship_sel.forEach(element => {
+            element.addEventListener('click', checkShipment);
+        });
+
+        function checkShipment() {
+            if (blackCat.checked) {
+                ship_fee = 150;
+                reCalc();
+            } else if (shopToShop.checked) {
+                ship_fee = 60;
+                reCalc();
+            }
+        }
+
+        function reCalc() {
+            shipfee_Sel.innerHTML = '$' + ship_fee;
+            total = sumPrice + ship_fee;
+            total_Sel.innerHTML = '$' + total;
+        }
     </script>
 @endsection

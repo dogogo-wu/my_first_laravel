@@ -117,19 +117,19 @@
                         <div class="d-flex flex-column align-items-end mt-4">
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">數量:</p>
-                                <p class="fw-bold">3</p>
+                                <p class="fw-bold">{{$myAry['prodcate']}}</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">小計:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p class="fw-bold">${{$myAry['subtot']}}</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">運費:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p class="fw-bold">${{$myAry['shipfee']}}</p>
                             </div>
                             <div class="d-flex justify-content-between w-25">
                                 <p class="my-total-txt my-light-txt">總計:</p>
-                                <p class="fw-bold">$24.90</p>
+                                <p class="fw-bold">${{$myAry['subtot'] + $myAry['shipfee']}}</p>
                             </div>
                         </div>
                     </div>
