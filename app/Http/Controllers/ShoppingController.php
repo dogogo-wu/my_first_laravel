@@ -69,11 +69,11 @@ class ShoppingController extends Controller
         if ($deliver == 1) {
             $shipfee = 150;
         }else{
-            $shipFee = 60;
+            $shipfee = 60;
         }
         $myAry = [
             'subtot' => session()->get('mysubtot'),
-            'shipfee' => $shipFee,
+            'shipfee' => $shipfee,
             'prodcate' => count($cartProdAry),
         ];
 
