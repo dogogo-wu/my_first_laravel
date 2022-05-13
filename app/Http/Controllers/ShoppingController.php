@@ -48,6 +48,7 @@ class ShoppingController extends Controller
         }
         session([
             'mysubtot' => $subtot,
+            'myprodcate' => count($cartProdAry),
         ]);
 
 
@@ -62,8 +63,6 @@ class ShoppingController extends Controller
             'deliver'=> $req->shipping_type,
         ]);
 
-        $cartProdAry = ShoppingCart::where('user_id', Auth::id())->get();
-
         $deliver = $req->shipping_type;
 
         if ($deliver == 1) {
@@ -71,13 +70,13 @@ class ShoppingController extends Controller
         }else{
             $shipfee = 60;
         }
-        $myAry = [
+        $myObj = [
             'subtot' => session()->get('mysubtot'),
             'shipfee' => $shipfee,
-            'prodcate' => count($cartProdAry),
+            'prodcate' => session()->get('myprodcate'),
         ];
 
-        return view('hw_bootstrap.shopcart.cart_03', compact('deliver','myAry'));
+        return view('hw_bootstrap.shopcart.cart_03', compact('deliver','myObj'));
     }
 
     public function bsweb_cart04_func(Request $req) {
