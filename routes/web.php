@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/cart03', [ShoppingController::class, 'bsweb_cart03_func']);
     Route::post('/cart04', [ShoppingController::class, 'bsweb_cart04_func']);
     Route::get('/show_order/{target}', [ShoppingController::class, 'show_order']);
-
 });
 
 Route::prefix('/comment')->group(function(){
