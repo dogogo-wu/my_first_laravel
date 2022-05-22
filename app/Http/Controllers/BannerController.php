@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Storage;
 class BannerController extends Controller
 {
     public function index() {
-        $bannerAry = Banner::get();
+        // Test
+        $bannerAry = Banner::orderBy('weight')->get();
+
+        // $bannerAry = Banner::get();
         $header = 'Banner管理-編輯頁';
         $slot = '';
 
@@ -71,4 +74,53 @@ class BannerController extends Controller
 
         return redirect('/banner');
     }
+
+    public function upmove($target) {
+
+        // 取得目標obj
+        $tarObj = Banner::find($target);
+        // 若已經是最上面，直接return
+        $tarWei = $tarObj->weight;
+        if ($tarWei == 0) {
+            return;
+        }
+        // 依weight小到大
+        $weiAry = Banner::orderBy('weight')->get();
+        // 找到前一個obj，
+        $prevObj = $weiAry[$tarWei-1];
+        // Swap order
+        $tarObj -> weight -= 1;
+        $prevObj -> weight += 1;
+        // Save
+        $tarObj->save();
+        $prevObj->save();
+
+        return redirect('/banner');
+    }
+    public function downmove($target) {
+
+        // 取得目標obj
+        $tarObj = Banner::find($target);
+        // 取得max_index
+        $max_index = Banner::count()-1;
+        // 若已經是最下面，直接return
+        $tarWei = $tarObj->weight;
+        if ($tarWei == $max_index) {
+            return;
+        }
+        // 依weight小到大
+        $weiAry = Banner::orderBy('weight')->get();
+        // 找到後一個obj，
+        $postObj = $weiAry[$tarWei+1];
+        // Swap order
+        $tarObj -> weight += 1;
+        $postObj -> weight -= 1;
+        // Save
+        $tarObj->save();
+        $postObj->save();
+
+        return redirect('/banner');
+
+    }
+
 }

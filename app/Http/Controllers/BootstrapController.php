@@ -22,7 +22,12 @@ class BootstrapController extends Controller
         $mydataAry = DB::table('news')->inRandomOrder()->take(3)->get();
 
         // $banAry = Banner::inRandomOrder()->get();
-        $banAry = Banner::get();
+
+        // Test
+        $banAry = Banner::orderBy('weight')->get();
+
+        // // Origin
+        // $banAry = Banner::get();
 
         $prodAry = Product::orderBy('id', 'desc')->take(8)->get();
         $prodRnd = Product::inRandomOrder()->first();
