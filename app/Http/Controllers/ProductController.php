@@ -118,4 +118,19 @@ class ProductController extends Controller
 
         return redirect('/product/edit/'.$prod_id);
     }
+
+    public function mystore($target, Request $req) {
+
+        // dd($req->all());
+
+        $targetObj = Product::find($target);
+        $targetObj->name = $req->mycontent;
+        $targetObj->save();
+
+        // Response只能接JSON的格式
+        $result = [
+            'new_name' => $req->mycontent,
+        ];
+        return $result;
+    }
 }

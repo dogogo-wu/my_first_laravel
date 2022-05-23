@@ -47,11 +47,13 @@
                                 <td>
                                     <img src="{{ $product->img }}" alt="">
                                 </td>
-                                <td>{{ $product->name }}</td>
+                                <td id="prod_name{{ $product->id }}">{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->number }}</td>
                                 <td>{{ $product->introduction }}</td>
                                 <td>
+                                    <button onclick="passValue({{ $product }})"
+                                        class="btn btn-outline-primary btn-sm me-2 mb-2 w-50" type="button">Test</button>
                                     <a href="/product/edit/{{ $product->id }}"
                                         class="btn btn-outline-success btn-sm me-2 mb-2">編輯</a>
                                     <a onclick="del_product({{ $product->id }})"
@@ -65,6 +67,31 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit_form" method="post">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="mycontent" class="col-form-label">改的內容:</label>
+                                    <input type="text" class="form-control" name="mycontent" id="mycontent" value="">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="save_btn" type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -83,12 +110,42 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-    </script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#product_list').DataTable();
         });
+
+        function passValue(prod) {
+            $('#myModal').modal('show');
+            document.querySelector('#mycontent').value = document.querySelector('#prod_name' + prod.id).innerHTML;
+            var handler = function() {
+                myedit(prod.id);
+            };
+            document.querySelector('#save_btn').onclick = handler;
+        }
+
+        function myedit(myid) {
+
+            let formData = new FormData(document.querySelector('#edit_form'));
+
+            fetch("/product/mystore/" + myid, {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let ele = document.querySelector('#prod_name' + myid);
+
+                    // 更新innerHTML (DB已更新，需自行更新畫面)
+                    ele.innerHTML = data.new_name;
+
+                    // 關掉modal
+                    $('#myModal').modal('hide');
+
+                });
+
+        }
     </script>
 @endsection

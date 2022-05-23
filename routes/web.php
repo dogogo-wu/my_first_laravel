@@ -86,6 +86,8 @@ Route::prefix('/product')->middleware(['auth'])->group(function(){
     Route::get('/edit/{target}', [ProductController::class, 'edit']);
     Route::post('/update/{target}', [ProductController::class, 'update']);
     Route::delete('/del_sec_img/{sec_tar}', [ProductController::class, 'del_secimg_func']);
+
+    Route::post('/mystore/{target}', [ProductController::class, 'mystore']);
 });
 
 Route::prefix('/account')->middleware(['auth'])->group(function(){

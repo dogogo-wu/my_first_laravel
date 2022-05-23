@@ -39,7 +39,7 @@
                             <th>功能</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="genSec">
                         @foreach ($bannerAry as $banner)
                             <tr>
                                 <td>
@@ -121,6 +121,43 @@
                 location.reload();
             })
 
+        }
+        // 想用JS更新
+        function genContent(){
+            // myarea = document.querySelector('#genSec');
+
+            // myarea.innerHTML =
+            //     for (let i = 0; i < 4; i++) {
+            //         const element = array[i];
+
+            //     }
+            // /*html*/
+            // `
+            // @foreach ($bannerAry as $banner)
+            //     <tr>
+            //         <td>
+            //             <button onclick="upmove({{ $banner->id }})"
+            //                 class="btn btn-outline-primary btn-sm me-2 mb-2 w-50" type="button">上移</button>
+            //             <button onclick="downmove({{ $banner->id }})"
+            //                 class="btn btn-outline-primary btn-sm me-2 mb-2 w-50" type="button">下移</button>
+            //         </td>
+            //         <td>
+            //             <img src="{{ asset($banner->img_path) }}" alt="{{ $banner->img_path }}"
+            //                 style="opacity: {{ $banner->img_opacity }}">
+            //         </td>
+            //         <td>{{ $banner->weight }}</td>
+            //         <td>
+            //             <button class="btn btn-outline-danger btn-sm me-3"
+            //                 onclick="del_banner({{ $banner->id }})">刪除</button>
+            //             <a href="/banner/edit/{{ $banner->id }}" class="btn btn-outline-success btn-sm">編輯</a>
+            //             <form id="delForm{{ $banner->id }}" action="/banner/delete/{{ $banner->id }}"
+            //                 method="POST">
+            //                 @csrf
+            //             </form>
+            //         </td>
+            //     </tr>
+            // @endforeach
+            // `;
         }
     </script>
 @endsection
