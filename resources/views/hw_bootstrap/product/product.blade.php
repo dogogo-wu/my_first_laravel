@@ -147,5 +147,22 @@
                 });
 
         }
+        // 防止按Enter送出get請求
+        $(document).on('keyup keypress', 'input', function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // input.addEventListener("keypress", function(event) {
+        //     // If the user presses the "Enter" key on the keyboard
+        //     if (event.key === "Enter") {
+        //         // Cancel the default action, if needed
+        //         event.preventDefault();
+        //         // Trigger the button element with a click
+        //         document.getElementById("save_btn").click();
+        //     }
+        // });
     </script>
 @endsection

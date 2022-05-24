@@ -32,7 +32,8 @@ class BannerController extends Controller
         Banner::create([
             'img_path' => $path,
             'img_opacity' => $req->banner_opacity,
-            'weight' => $req->img_weight,
+            // 'weight' => $req->img_weight,
+            'weight' => Banner::count(),
         ]);
 
         return redirect('/banner');
@@ -40,6 +41,16 @@ class BannerController extends Controller
 
     public function delete($target) {
         $targetObj = Banner::where('id', $target)->first();
+
+        // ------ 後面的oreder往前移1 ------
+        $tarWei = $targetObj->weight;
+        $weiAry = Banner::orderBy('weight')->get();
+
+        for ($i = $tarWei + 1; $i < Banner::count(); $i++) {
+            $weiAry[$i]->weight -= 1;
+            $weiAry[$i]->save();
+        }
+        // ------ End ------
 
         $targetPath = str_replace('storage', 'public', $targetObj->img_path);
         Storage::disk('local')->delete($targetPath);
