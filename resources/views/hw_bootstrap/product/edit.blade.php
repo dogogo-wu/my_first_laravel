@@ -76,10 +76,26 @@
                         <input type="text" class="form-control my-placeholder-txt" id="product_number" name="product_number"
                             value="{{ $edited->number }}">
                     </div>
-                    <div class="mb-3">
+                    {{-- original --}}
+                    {{-- <div class="mb-3">
                         <label for="product_intro" class="form-label my-label-txt">介紹</label>
                         <input type="text" class="form-control my-placeholder-txt" id="product_intro" name="product_intro"
                             value="{{ $edited->introduction }}">
+                    </div> --}}
+
+                    {{-- My textarea test --}}
+                    <div class="mb-3">
+                        <label for="product_intro" class="form-label my-label-txt">介紹</label>
+                        {{-- <textarea name="product_intro2" class="form-control" id="product_intro" cols="30"
+                            rows="10">{{ $edited->introduction }}</textarea> --}}
+
+                            {{-- OK --}}
+                            {{-- <textarea name="product_intro2" class="form-control" id="product_intro" cols="30"
+                            rows="10">{{ str_replace('<br>',"\r\n", $edited->introduction) }}</textarea> --}}
+
+                            <textarea name="product_intro2" class="form-control" id="product_intro" cols="30"
+                            rows="10">{{ ltrim(str_replace('</p><p>',"\r\n", $edited->introduction), '<p>') }}</textarea>
+
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-4">

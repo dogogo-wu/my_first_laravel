@@ -50,7 +50,9 @@
                                 <td id="prod_name{{ $product->id }}">{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->number }}</td>
-                                <td>{{ $product->introduction }}</td>
+                                {{-- <td>{{ $product->introduction }}</td> --}}
+                                <td>{!! $product->introduction !!}</td>
+                                
                                 <td>
                                     <button onclick="passValue({{ $product }})"
                                         class="btn btn-outline-primary btn-sm me-2 mb-2 w-50" type="button">Test</button>

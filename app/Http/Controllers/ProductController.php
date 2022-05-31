@@ -80,8 +80,11 @@ class ProductController extends Controller
         return view('hw_bootstrap.product.edit', compact('edited', 'header', 'slot'));
     }
 
+
     public function update($target, Request $req) {
         $targetObj = Product::find($target);
+
+        // dd($req->product_intro2);
 
         if($req->hasfile('product_img')){
             $path = FilesController::imgUpload($req->product_img, 'product');
@@ -90,10 +93,24 @@ class ProductController extends Controller
             $targetObj->img = $path;
         }
 
+        // 處理text area
+
+        // $new_intro = str_replace("\n", "<br>", $req->product_intro2);
+
+        // 用br (OK)
+        $new_intro = str_replace(array("\r\n","\n"),'<br>', $req->product_intro2);
+
+
+        // 寫1個func處理 (OK)
+        $new_intro = ProductController::textTrans($req->product_intro2);
+
+
+
         $targetObj->name = $req->product_name;
         $targetObj->price = $req->product_price;
         $targetObj->number = $req->product_number;
-        $targetObj->introduction = $req->product_intro;
+        // $targetObj->introduction = $req->product_intro2;
+        $targetObj->introduction = $new_intro;
         $targetObj->save();
 
         if($req->hasfile('second_img')){
@@ -108,6 +125,13 @@ class ProductController extends Controller
 
         return redirect('/product');
     }
+    public function textTrans($intxt){
+        $outxt = '<p>'. str_replace(array("\r\n","\n"),'</p><p>', $intxt) . '</p>';
+
+        return $outxt;
+    }
+
+
 
     public function del_secimg_func($sec_tar){
         $tarimg = ProductImg::find($sec_tar);

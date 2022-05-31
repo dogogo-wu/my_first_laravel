@@ -10,6 +10,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PriceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,14 @@ Route::prefix('/comment')->group(function(){
 
 Route::get('/login', [NewController::class, 'bsweb_login_func']);
 
+Route::prefix('/price')->middleware(['auth'])->group(function(){
+    Route::get('/', [PriceController::class, 'index']);
+    // Route::get('/create', [PriceController::class, 'create']);
+    // Route::post('/store', [PriceController::class, 'store']);
+    // Route::post('/delete/{target}', [PriceController::class, 'delete']);
+    // Route::get('/edit/{target}', [PriceController::class, 'edit']);
+    // Route::post('/update/{target}', [PriceController::class, 'update']);
+});
 
 Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::get('/', [BannerController::class, 'index']);

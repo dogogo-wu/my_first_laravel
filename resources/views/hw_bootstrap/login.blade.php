@@ -102,7 +102,7 @@
                                 </div>
                                 <br>
                                 <div class="d-flex w-100 justify-content-between">
-                                    <a class="link-style">Forgot your password?</a>
+                                    <a href="{{ route('password.request') }}" class="link-style">Forgot your password?</a>
                                     <a href="/register" class="link-style">新用戶？點此註冊</a>
                                 </div>
 
