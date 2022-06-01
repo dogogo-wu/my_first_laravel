@@ -94,7 +94,7 @@
                             rows="10">{{ str_replace('<br>',"\r\n", $edited->introduction) }}</textarea> --}}
 
                             <textarea name="product_intro2" class="form-control" id="product_intro" cols="30"
-                            rows="10">{{ ltrim(str_replace('</p><p>',"\r\n", $edited->introduction), '<p>') }}</textarea>
+                            rows="10">{{ rtrim(ltrim(str_replace('</p><p>',"\r\n", $edited->introduction), '<p>'),'</p>') }}</textarea>
 
                     </div>
 
